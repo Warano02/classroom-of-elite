@@ -9,7 +9,7 @@ interface TimeLeft {
   seconds: number;
 }
 
-const DEADLINE = new Date("2025-07-01T00:00:00");
+const DEADLINE = new Date("2026-05-28T00:00:00");
 
 function getTimeLeft(): TimeLeft {
   const diff = DEADLINE.getTime() - Date.now();
