@@ -1,13 +1,13 @@
 {
-  "name": "marketing-dashboard",
+  "name": "ingenieur-web",
   "version": "0.1.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ton-username/marketing-dashboard.git"
+    "url": "https://github.com/warano02/marketing-dashboard.git"
   },
-  "homepage": "https://github.com/ton-username/marketing-dashboard",
+  "homepage": "https://github.com/warano02/marketing-dashboard",
   "bugs": {
-    "url": "https://github.com/ton-username/marketing-dashboard/issues"
+    "url": "https://github.com/warano02/marketing-dashboard/issues"
   },
   "scripts": {
     "dev": "next dev",
