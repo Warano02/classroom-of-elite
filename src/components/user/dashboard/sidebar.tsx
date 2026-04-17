@@ -49,6 +49,8 @@ import {
   Trash2,
   BookAIcon,
   Mail,
+  House,
+  Bell,
 } from "lucide-react";
 import { useBookmarksStore } from "@/store/bookmarks-store";
 import { collections, tags } from "@/mock-data/bookmarks";
@@ -64,8 +66,10 @@ const collectionIcons: Record<string, React.ElementType> = {
 
 const navItems = [
   { icon: BookAIcon, label: "Course", href: "/user" },
+  { icon: House, label: "Classroom", href: "/user/classroom" },
   { icon: Star, label: "Favorites", href: "/user/favorites" },
   { icon: Mail, label: "Inbox", href: "/user/inbox" },
+  { icon: Bell, label: "Notifications", href: "/user/notifications" },
   { icon: Archive, label: "Archive", href: "/user/archive" },
   { icon: Trash2, label: "Trash", href: "/user/trash" },
 ];
@@ -91,7 +95,7 @@ export function BookmarksSidebar({
       <SidebarHeader className="p-5 pb-0">
         <div className="flex items-center justify-between">
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-2 outline-none">
+            <DropdownMenuTrigger className="flex items-center gap-2 outline-none cursor-pointer">
               <div className="size-7 rounded-full overflow-hidden bg-linear-to-br from-blue-400 via-indigo-500 to-violet-500 flex items-center justify-center ring-1 ring-white/40 shadow-lg" />
               <span className="font-medium text-muted-foreground">
                 Square UI
@@ -102,7 +106,7 @@ export function BookmarksSidebar({
               <DropdownMenuLabel className="text-muted-foreground text-xs font-medium">
                 Workspaces
               </DropdownMenuLabel>
-              <DropdownMenuItem>
+              {/* <DropdownMenuItem>
                 <div className="size-5 rounded-full bg-linear-to-br from-blue-400 via-indigo-500 to-violet-500 mr-2" />
                 Square UI
                 <Check className="size-4 ml-auto" />
@@ -116,11 +120,12 @@ export function BookmarksSidebar({
                 Work
               </DropdownMenuItem>
 
-              <DropdownMenuSeparator />
+              <DropdownMenuSeparator /> */}
 
-              <DropdownMenuItem>
-                <Settings className="size-4 mr-2" />
-                Workspace Settings
+              <DropdownMenuItem className="cursor-pointer">
+                <Link href={"/user/settings"} className="flex gap-2">
+                  <Settings className="size-4 mr-2" />
+                  Workspace Settings</Link>
               </DropdownMenuItem>
 
               <DropdownMenuSeparator />
@@ -139,16 +144,7 @@ export function BookmarksSidebar({
       </SidebarHeader>
 
       <SidebarContent className="px-5 pt-5">
-        <div className="relative mb-4">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
-          <Input
-            placeholder="Search in mboa learn..."
-            className="pl-9 pr-10 h-9 bg-background"
-          />
-          <div className="absolute right-2 top-1/2 -translate-y-1/2 bg-muted px-1.5 py-0.5 rounded text-[11px] text-muted-foreground font-medium">
-            ⌘K
-          </div>
-        </div>
+        <InputSide />
 
         <SidebarGroup className="p-0">
           <SidebarGroupContent>
@@ -262,4 +258,18 @@ export function BookmarksSidebar({
 
     </Sidebar>
   );
+}
+
+
+const InputSide = () => {
+  return <div className="relative mb-4">
+    <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
+    <Input
+      placeholder="Search in mboa learn..."
+      className="pl-9 pr-10 h-9 bg-background"
+    />
+    <div className="absolute right-2 top-1/2 -translate-y-1/2 bg-muted px-1.5 py-0.5 rounded text-[11px] text-muted-foreground font-medium">
+      ⌘K
+    </div>
+  </div>
 }
