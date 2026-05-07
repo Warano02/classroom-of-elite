@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,10 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`} suppressHydrationWarning>
       <body className="min-h-full flex flex-col">
         <ThemeProvider
           attribute="class"
@@ -36,7 +35,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-         <TooltipProvider>{children}</TooltipProvider>
+          <TooltipProvider>{children}</TooltipProvider>
         </ThemeProvider>
       </body>
     </html>

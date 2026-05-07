@@ -1,9 +1,17 @@
 
-import Countdown from './Countdown'
+import Navbar from '@/components/navbar'
+import Countdown from '../src/components/Countdown'
+import Footer from '@/components/footer'
 
 function page() {
   return (
-    <Countdown/>
+    <>
+      <Navbar/>
+      <main>
+        <Countdown/>
+      </main>
+      <Footer/>
+    </>
   )
 }
 
