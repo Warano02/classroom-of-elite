@@ -1,10 +1,10 @@
 export interface Classe {
     id: string;
-    nom: string;
+    name: string;
     description: string;
     slogan?: string;
-    icon?: string;
+    image?: string;
     suspendue?: boolean;
-    eleves?: number;
+    students?: number;
     viewMode: "grid" | "list";
 }

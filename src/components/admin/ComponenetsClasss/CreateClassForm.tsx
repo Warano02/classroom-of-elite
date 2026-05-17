@@ -6,13 +6,16 @@ import { useRouter } from "next/navigation";
 
 import { ArrowLeft, Save } from "lucide-react";
 
+import { axiosInstance } from '@/lib/axios'
+
 import type { Classe } from "@/types/classe";
+import Students from "../../../../app/teacher/class/[idCourse]/students/page";
 
 export default function CreateClasseForm() {
     const router = useRouter();
 
     const [formData, setFormData] = useState({
-        nom: "",
+        name: "",
         description: "",
         slogan: "",
         icon: "",
@@ -31,14 +34,32 @@ export default function CreateClasseForm() {
         "📖",
     ];
 
-    const handleSubmit = (
-        e: React.FormEvent
-    ) => {
+    const handleSubmit = async (e:React.FormEvent) =>{
         e.preventDefault();
+    }
+
+    if(!formData.name || !formData.description)
+        return alert("Fill all the inputs")
+
+    try{
+         try {
+            const {data}=await axiosInstance.post('/teacher/(root)/classroom/create',{
+            name: formData.name,
+            decription: formData.description,
+            slogan: formData.slogan || undefined,
+            image: formData.image || undefined,
+            suspendue:false,
+            Students: false,
+        }) catch (e) {
+            console.error(e)
+            alert("Error during the creation of the classe")
+        }
+    }
 
         const newClasse: Classe = {
         id: Date.now().toString(),
-        nom: formData.nom,
+        name: formData.name,
+        viewMode: "grid" ,
         description: formData.description,
         slogan:
             formData.slogan || undefined,
@@ -54,11 +75,6 @@ export default function CreateClasseForm() {
             : [];
 
         classes.push(newClasse);
-
-        localStorage.setItem(
-        "classes",
-        JSON.stringify(classes)
-        );
 
         router.push("/teacher/classrooms");
     };
@@ -96,7 +112,7 @@ return (
             </button>
 
             <h1 className="text-3xl font-bold">
-                Créer une classe
+                Create a class
             </h1>
             </div>
         </header>
@@ -113,17 +129,17 @@ return (
                 backdrop-blur-xl
             "
             >
-            {/* Nom */}
+            {/* name */}
             <div className="mb-6">
                 <label className="block mb-2 text-zinc-300">
-                Nom de la classe
+                class name
                 </label>
 
                 <input
                 type="text"
-                name="nom"
+                name="name"
                 required
-                value={formData.nom}
+                value={formData.name}
                 onChange={handleChange}
                 className="
                     w-full
