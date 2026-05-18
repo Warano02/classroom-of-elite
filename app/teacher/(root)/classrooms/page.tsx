@@ -1,14 +1,14 @@
 import ClassesList from "@/components/admin/ComponenetsClasss/ClassesListe";
 
-// const mockClass:Classe={
-//   id:'2bvkjbkjdfjkjdfnerijbjiejhgbhe2ruihuie2rgui2erhbu',
-//   nom:'L2Info',
-//   description:'tes noyaux man ',
-//   icon:"😂"
-// }
-
-export default function ClassesPage() {
+export const metadata={
+    title:"List of classrooms - IW"
+}
+function ClassRoom() {
   return (
     <ClassesList />
-  );
+  )
 }
+
+export default ClassRoom
+
+

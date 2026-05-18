@@ -6,5 +6,5 @@ export interface Classe {
     image?: string;
     suspendue?: boolean;
     students?: number;
-    viewMode: "grid" | "list";
+    viewMode?: "grid" | "list";
 }
