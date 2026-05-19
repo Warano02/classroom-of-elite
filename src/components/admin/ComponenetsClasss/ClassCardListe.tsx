@@ -19,10 +19,9 @@
     }: Props) {
     return (
         <div className="flex items-center gap-6 p-6 rounded-3xl border border-white/10 bg-white/5">
-            <div className="text-5xl">{classe.icon || "📚"}</div>
 
             <div className="flex-1">
-                <h2 className="text-xl font-bold text-white">{classe.nom}</h2>
+                <h2 className="text-xl font-bold text-white">{classe.name}</h2>
                 <p className="text-zinc-400">{classe.description}</p>
             </div>
 

@@ -27,16 +27,14 @@ function CreateAdminForm() {
       }}
     >
       {/* Nom / Prénom */}
-      <div className="grid grid-cols-2 gap-4">
-        <input
-          type="text"
-          onChange={(e) =>
-            setPayload((prev) => ({ ...prev, name: e.target.value }))
-          }
-          placeholder="Nom"
-          className="w-full bg-black border border-white-500 text-white placeholder-gray-400 rounded-xl p-3 outline-none focus:ring-2 focus:ring-white-500"
-        />
-      </div>
+      <input
+        type="text"
+        onChange={(e) =>
+          setPayload((prev) => ({ ...prev, name: e.target.value }))
+        }
+        placeholder="Nom"
+        className="w-full bg-black border border-white-500 text-white placeholder-gray-400 rounded-xl p-3 outline-none focus:ring-2 focus:ring-white-500"
+      />
 
       {/* Email */}
       <input

@@ -12,7 +12,7 @@ function LoginForm() {
         if(!ayii.identifier||!ayii.password)return alert("Maff remplie tout ")
             try {
                 const {data}=await axiosInstance.post('/auth/login',ayii)
-                console.log(data)
+                window.location.href=window.location.origin+"/"+data.user.role
             } catch (e) {
                 alert("Error occured while login ",)
                 console.error(e)

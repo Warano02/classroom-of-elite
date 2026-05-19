@@ -7,22 +7,26 @@
         const [formData,setFormData]=useState({
             name:"",
             email:"",
-            identifier:"",
+            matricule:"",
+            classId:"",
             password:"",
         })
 
         const handleSubmit=async () => {
-            if(!formData.name || !formData.email || !formData.identifier || !formData.password )return alert("fill all")
+            if(!formData.name || !formData.email || !formData.matricule || !formData.password )return alert("fill all")
                 try {
-                    const {data}=await axiosInstance.post('/auth/login',ayii)
+                    const {data}=await axiosInstance.post('/auth/signup', formData)
                     console.log(data)
+                    alert("Your account has been created !")
+                    // Route.push('/login') redirection
                 } catch (e) {
                     alert("Error occured while login ",)
                     console.error(e)
-                    alert("invalide data")
+                    alert("Error during the signup process")
                 }
         }
-        console.log( process.env.NEXT_API_BASE_URL)
+        // console.log( process.env.NEXT_API_BASE_URL)
+
     return (
         <form
                 onSubmit={(e)=>{e.preventDefault();handleSubmit()}}
@@ -37,7 +41,7 @@
                 > 
                 <div className="max-w-2xl mx-auto px-6 py-6 flex  justify-center gap-4">
                     <h1 className="text-3xl font-bold ">
-                    Login Form
+                        SignUp
                     </h1>
                 </div>
 
@@ -48,7 +52,7 @@
 
                     <Input 
                     type="text"
-                    onChange={(e)=>setAyii(p=>({...p,name:e.target.value}))}
+                    onChange={(e)=>setFormData(p=>({...p,name:e.target.value}))}
                     className=" w-full h-15 px-4 py-3 rounded-xl   bg-black/40 border border-white/10" required/>
                 </div>
 
@@ -59,7 +63,7 @@
 
                     <Input 
                     type="email"
-                    onChange={(e)=>setAyii(p=>({...p,email:e.target.value}))}
+                    onChange={(e)=>setFormData(p=>({...p,email:e.target.value}))}
                     className=" w-full h-15 px-4 py-3 rounded-xl   bg-black/40 border border-white/10" required/>
                 </div>
                 
@@ -70,7 +74,18 @@
 
                     <Input 
                     type="text"
-                    onChange={(e)=>setAyii(p=>({...p,identifier:e.target.value}))}
+                    onChange={(e)=>setFormData(p=>({...p,matricule:e.target.value}))}
+                    className=" w-full h-15 px-4 py-3 rounded-xl   bg-black/40 border border-white/10" required/>
+                </div>
+
+                <div className="mb-6">
+                    <label className="block mb-2 text-zinc-300">
+                    classe id
+                    </label>
+
+                    <Input 
+                    type="text"
+                    onChange={(e)=>setFormData(p=>({...p,classId:e.target.value}))}
                     className=" w-full h-15 px-4 py-3 rounded-xl   bg-black/40 border border-white/10" required/>
                 </div>
 
@@ -81,7 +96,7 @@
 
                     <Input 
                     type="password"
-                    onChange={(e)=>setAyii(p=>({...p,password:e.target.value}))}
+                    onChange={(e)=>setFormData(p=>({...p,password:e.target.value}))}
 
                     className="
                         w-full
@@ -104,11 +119,11 @@
                         hover:bg-pink-600
                     "
                     >
-                    Submit
+                    SignUp
                     </button>
                 </div>
                 </form>
     )
     }
 
-    export default LoginForm
+    export default RegisterForm
