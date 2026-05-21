@@ -65,7 +65,7 @@ function PlatformIcon({ platform }: { platform: Platform }) {
   return (
     <span title={platform} aria-label={platform}>
       {platform === "Instagram" && (
-        <Instagram className="size-3.5 text-pink-500" />
+        <Instagram className="size-3.5 text-sky-500" />
       )}
       {platform === "TikTok" && (
         <svg className="size-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -91,7 +91,7 @@ function StatusBadge({ status }: { status: CampaignStatus }) {
     Draft: "border text-muted-foreground bg-transparent",
     Live: "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400 border-emerald-200 dark:border-emerald-900",
     Paused: "bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-400 border-amber-200 dark:border-amber-900",
-    Ended: "bg-pink-100 text-pink-700 dark:bg-pink-950 dark:text-pink-400 border-pink-200 dark:border-pink-900",
+    Ended: "bg-slate-100 text-slate-700 dark:bg-slate-950 dark:text-slate-400 border-slate-200 dark:border-slate-900",
   };
   return (
     <Badge variant="outline" className={cn("text-xs font-medium px-2 py-0.5", variants[status])}>

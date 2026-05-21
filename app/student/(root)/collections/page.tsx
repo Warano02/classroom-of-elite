@@ -3,7 +3,7 @@ function Collection() {
     return (
         <div>
             Collection
-            ici, l'utilisateur a la possibilité de voir les collection de cours qu'il a fait, impeut comme une sorte de playlist youtube
+            <p>Here users can view the course collections they have created, similar to a YouTube playlist.</p>
         </div>
     )
 }

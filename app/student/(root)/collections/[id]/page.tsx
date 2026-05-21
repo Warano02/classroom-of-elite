@@ -5,8 +5,9 @@ export const metadata: Metadata = {
 }
 function Page() {
     return (
-        <div>Page
-            ici, il voit les cours d'une collection precise
+        <div>
+            <h1>Collection</h1>
+            <p>Here you can view the courses in a specific collection.</p>
         </div>
     )
 }

@@ -1,11 +1,15 @@
 import ClassesList from "@/components/admin/ComponenetsClasss/ClassesListe";
+import { BookmarksHeader } from "@/components/user/dashboard/header";
 
 export const metadata={
     title:"List of classrooms - IW"
 }
 function ClassRoom() {
   return (
-    <ClassesList />
+    <>
+        <BookmarksHeader title="Classrooms" />
+        <ClassesList />
+    </>
   )
 }
 

@@ -18,17 +18,17 @@
     onShare
     }: Props) {
     return (
-        <div className="flex items-center gap-6 p-6 rounded-3xl border border-white/10 bg-white/5">
+        <div className="flex items-center gap-6 p-6 rounded-3xl border border-border bg-card">
 
             <div className="flex-1">
-                <h2 className="text-xl font-bold text-white">{classe.name}</h2>
-                <p className="text-zinc-400">{classe.description}</p>
+                <h2 className="text-xl font-bold text-foreground">{classe.name}</h2>
+                <p className="text-muted-foreground">{classe.description}</p>
             </div>
 
             <div className="flex items-center gap-2">
                 <button
                 onClick={() => onShare(classe)}
-                className="p-2 rounded-xl bg-white/10"
+                className="p-2 rounded-xl bg-background/70 text-foreground hover:bg-background transition-colors"
                 >
                 <Share2 className="w-5 h-5" />
                 </button>

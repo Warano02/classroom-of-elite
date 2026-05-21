@@ -61,15 +61,15 @@ const statusConfig: Record<LeadStatus, { label: string; className: string }> = {
     className:
       "bg-amber-100 text-amber-800 dark:bg-amber-950/30 dark:text-amber-400 border-amber-200 dark:border-amber-800",
   },
-  inactive: {
-    label: "Inactive",
-    className:
-      "bg-gray-100 text-gray-800 dark:bg-gray-950/30 dark:text-gray-400 border-gray-200 dark:border-gray-800",
-  },
   recycled: {
     label: "Recycled",
     className:
-      "bg-pink-100 text-pink-800 dark:bg-pink-950/30 dark:text-pink-400 border-pink-200 dark:border-pink-800",
+      "bg-cyan-100 text-cyan-800 dark:bg-cyan-950/30 dark:text-cyan-400 border-cyan-200 dark:border-cyan-800",
+  },
+  inactive: {
+    label: "Inactive",
+    className:
+      "bg-muted/50 text-muted-foreground dark:bg-muted/30 dark:text-muted-foreground border-border dark:border-border",
   },
 };
 

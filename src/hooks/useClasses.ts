@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 
 import { Classe } from "@/types/classe";
-import { defaultClasses } from "@/data/classes";
 import {
     getClasses,
     saveClasses,
@@ -17,10 +16,8 @@ export function useClasses() {
 
         if (storedClasses.length > 0) {
         setClasses(storedClasses);
-        } else {
-        setClasses(defaultClasses);
-        saveClasses(defaultClasses);
-        }
+        } 
+        
     }, []);
 
     return {

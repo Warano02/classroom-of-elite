@@ -3,19 +3,19 @@ import { Plus, BookOpen } from "lucide-react";
 
 export default function ClassesHeader() {
     return (
-        <header className="border-b border-white/10 bg-black/40 backdrop-blur-xl">
+        <header className="border-b border-border bg-card backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
             <div className="flex items-center gap-4">
-            <div className="p-3 rounded-2xl bg-white/10">
-                <BookOpen className="w-7 h-7 text-white" />
+            <div className="p-3 rounded-2xl bg-background/70">
+                <BookOpen className="w-7 h-7 text-accent-foreground" />
             </div>
 
             <div>
-                <h1 className="text-3xl font-bold text-white">
+                <h1 className="text-3xl font-bold text-foreground">
                     My Classes
                 </h1>
 
-                <p className="text-zinc-400">
+                <p className="text-muted-foreground">
                 Create and manage your classes
                 </p>
             </div>
@@ -30,8 +30,9 @@ export default function ClassesHeader() {
                 px-5
                 py-3
                 rounded-xl
-                bg-white/10
-                hover:bg-white/40
+                bg-accent/10
+                text-accent-foreground
+                hover:bg-accent/20
                 transition-all
             "
             >

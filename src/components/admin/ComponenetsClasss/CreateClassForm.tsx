@@ -1,15 +1,9 @@
 "use client";
 
 import { useState } from "react";
-
 import { useRouter } from "next/navigation";
-
 import { ArrowLeft, Save } from "lucide-react";
-
-import { axiosInstance } from '@/lib/axios'
-
-import type { Classe } from "@/types/classe";
-import Students from "../../../../app/teacher/class/[idCourse]/students/page";
+import { axiosInstance } from "@/lib/axios";
 
 export default function CreateClasseForm() {
     const router = useRouter();
@@ -18,265 +12,162 @@ export default function CreateClasseForm() {
         name: "",
         description: "",
         slogan: "",
-        icon: "",
+        image: null as File | null,
     });
 
-    const emojiSuggestions = [
-        "📚",
-        "📐",
-        "🎨",
-        "💻",
-        "🔬",
-        "🌍",
-        "🎵",
-        "⚽",
-        "🎭",
-        "📖",
-    ];
-
-    const handleSubmit = async (e:React.FormEvent) =>{
-        e.preventDefault();
-    }
-
-    if(!formData.name || !formData.description)
-        return alert("Fill all the inputs")
-
-    try{
-         try {
-            const {data}=await axiosInstance.post('/teacher/(root)/classroom/create',{
-            name: formData.name,
-            decription: formData.description,
-            slogan: formData.slogan || undefined,
-            image: formData.image || undefined,
-            suspendue:false,
-            Students: false,
-        }) catch (e) {
-            console.error(e)
-            alert("Error during the creation of the classe")
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
+        if (e.target instanceof HTMLInputElement && e.target.type === "file") {
+            setFormData({ ...formData, image: e.target.files?.[0] ?? null });
+        } else {
+            setFormData({ ...formData, [e.target.name]: e.target.value });
         }
-    }
-
-        const newClasse: Classe = {
-        id: Date.now().toString(),
-        name: formData.name,
-        viewMode: "grid" ,
-        description: formData.description,
-        slogan:
-            formData.slogan || undefined,
-        icon: formData.icon || undefined,
-        };
-
-        const savedClasses =
-        localStorage.getItem("classes");
-
-        const classes: Classe[] =
-        savedClasses
-            ? JSON.parse(savedClasses)
-            : [];
-
-        classes.push(newClasse);
-
-        router.push("/teacher/classrooms");
     };
 
-    const handleChange = (
-        e: React.ChangeEvent<
-        HTMLInputElement | HTMLTextAreaElement
-        >
-    ) => {
-        setFormData({
-        ...formData,
-        [e.target.name]: e.target.value,
-        });
-};
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
 
-return (
-        <div className="min-h-screen bg-black text-white">
-        {/* Header */}
-        <header className="border-b border-white/10 bg-white/5 backdrop-blur-xl">
-            <div className="max-w-4xl mx-auto px-6 py-6 flex items-center gap-4">
-            <button
-                onClick={() =>
-                router.push(
-                    "/teacher/classrooms"
-                )
-                }
-                className="
-                p-2
-                rounded-xl
-                hover:bg-white/10
-                transition-all
-                "
-            >
-                <ArrowLeft className="w-6 h-6" />
-            </button>
+        if (!formData.name || !formData.description) {
+            return alert("Please fill in all required fields.");
+        }
 
-            <h1 className="text-3xl font-bold">
-                Create a class
-            </h1>
-            </div>
-        </header>
+        try {
+            const body = new FormData();
+            body.append("name", formData.name);
+            body.append("description", formData.description);
+            if (formData.slogan) body.append("slogan", formData.slogan);
+            if (formData.image) body.append("image", formData.image);
+            body.append("suspendue", "false");
+            body.append("students", "0");
 
-        {/* Form */}
-        <main className="max-w-4xl mx-auto px-6 py-10">
-            <form
-            onSubmit={handleSubmit}
-            className="
-                bg-white/5
-                border border-white/10
-                rounded-3xl
-                p-8
-                backdrop-blur-xl
-            "
-            >
-            {/* name */}
-            <div className="mb-6">
-                <label className="block mb-2 text-zinc-300">
-                class name
-                </label>
+            await axiosInstance.post("/teacher/classroom/create", body, {
+                headers: { "Content-Type": "multipart/form-data" },
+            });
 
-                <input
-                type="text"
-                name="name"
-                required
-                value={formData.name}
-                onChange={handleChange}
-                className="
-                    w-full
-                    px-4 py-3
-                    rounded-xl
-                    bg-black/40
-                    border border-white/10
-                "
-                />
-            </div>
+            router.push("/teacher/classrooms");
+        } catch (e) {
+            console.error(e);
+            alert("Erreur lors de la création de la classe.");
+        }
+    };
 
-            {/* Description */}
-            <div className="mb-6">
-                <label className="block mb-2 text-zinc-300">
-                Description
-                </label>
+    return (
+        <div className="min-h-screen bg-background text-foreground">
 
-                <textarea
-                name="description"
-                required
-                rows={4}
-                value={formData.description}
-                onChange={handleChange}
-                className="
-                    w-full
-                    px-4 py-3
-                    rounded-xl
-                    bg-black/40
-                    border border-white/10
-                    resize-none
-                "
-                />
-            </div>
+            <header className="border-b border-border bg-card/80 backdrop-blur-xl shadow-lg shadow-slate-950/20">
+                <div className="max-w-4xl mx-auto px-6 py-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                    <div className="flex items-start gap-4">
+                        <button
+                            onClick={() => router.push("/teacher/classrooms")}
+                            className="mt-1 inline-flex items-center justify-center rounded-2xl border border-border bg-card/10 p-3 text-foreground transition hover:bg-card/20"
+                        >
+                            <ArrowLeft className="w-5 h-5" />
+                        </button>
 
-            {/* Slogan */}
-            <div className="mb-6">
-                <label className="block mb-2 text-zinc-300">
-                Slogan
-                </label>
+                        <div>
+                            <p className="text-xs uppercase tracking-[0.25em] text-pink-400">
+                                Classroom creation
+                            </p>
+                            <h1 className="mt-2 text-3xl font-bold text-foreground">
+                                Create Class
+                            </h1>
+                            <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
+                                Add the classroom details, optional slogan, and an image so students can identify it easily.
+                            </p>
+                        </div>
+                    </div>
 
-                <input
-                type="text"
-                name="slogan"
-                value={formData.slogan}
-                onChange={handleChange}
-                className="
-                    w-full
-                    px-4 py-3
-                    rounded-xl
-                    bg-black/40
-                    border border-white/10
-                "
-                />
-            </div>
-
-            {/* Emoji */}
-            <div className="mb-8">
-                <label className="block mb-2 text-zinc-300">
-                Icône
-                </label>
-
-                <input
-                type="text"
-                name="icon"
-                value={formData.icon}
-                onChange={handleChange}
-                maxLength={2}
-                className="
-                    w-full
-                    px-4 py-3
-                    rounded-xl
-                    bg-black/40
-                    border border-white/10
-                "
-                />
-
-                <div className="flex flex-wrap gap-3 mt-4">
-                {emojiSuggestions.map(
-                    (emoji) => (
-                    <button
-                        key={emoji}
-                        type="button"
-                        onClick={() =>
-                        setFormData({
-                            ...formData,
-                            icon: emoji,
-                        })
-                        }
-                        className="
-                        w-14 h-14
-                        text-2xl
-                        rounded-xl
-                        bg-white/5
-                        border border-white/10
-                        "
-                    >
-                        {emoji}
-                    </button>
-                    )
-                )}
+                    <div className="hidden md:flex items-center gap-3">
+                        <div className="rounded-2xl bg-muted px-4 py-3 text-sm text-muted-foreground border border-border">
+                            Ready to launch your next class?
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </header>
 
-            {/* Actions */}
-            <div className="flex justify-end gap-4 border-t border-white/10 pt-6">
-                <button
-                type="button"
-                onClick={() =>
-                    router.push(
-                    "/teacher/classrooms"
-                    )
-                }
-                className="
-                    px-6 py-3
-                    rounded-xl
-                    border border-white/10
-                "
-                >
-                Annuler
-                </button>
 
-                <button
-                type="submit"
-                className="
-                    inline-flex items-center gap-2
-                    px-6 py-3
-                    rounded-xl
-                    bg-pink-500
-                    hover:bg-pink-600
-                "
+            <main className="max-w-4xl mx-auto px-6 py-10">
+                <form
+                    onSubmit={handleSubmit}
+                    className="bg-card border border-border rounded-3xl p-8 backdrop-blur-xl"
                 >
-                <Save className="w-5 h-5" />
-                Created 
-                </button>
-            </div>
-            </form>
-        </main>
+                    {/* Nom */}
+                    <div className="mb-6">
+                        <label className="block mb-2 text-muted-foreground">
+                            Class name
+                        </label>
+                        <input
+                            type="text"
+                            name="name"
+                            required
+                            value={formData.name}
+                            onChange={handleChange}
+                            className="w-full px-4 py-3 rounded-xl bg-input border border-border"
+                        />
+                    </div>
+
+                    {/* Description */}
+                    <div className="mb-6">
+                        <label className="block mb-2 text-muted-foreground">
+                            Description
+                        </label>
+                        <textarea
+                            name="description"
+                            required
+                            rows={4}
+                            value={formData.description}
+                            onChange={handleChange}
+                            className="w-full px-4 py-3 rounded-xl bg-input border border-border resize-none"
+                        />
+                    </div>
+                    {/* Slogan */}
+                    <div className="mb-6">
+                        <label className="block mb-2 text-muted-foreground">
+                            Slogan
+                        </label>
+                        <input
+                            type="text"
+                            name="slogan"
+                            value={formData.slogan}
+                            onChange={handleChange}
+                            className="w-full px-4 py-3 rounded-xl bg-input border border-border"
+                        />
+                    </div>
+
+                    {/* Image */}
+                    <div className="mb-8">
+                        <label className="block mb-2 text-muted-foreground">
+                            Class image
+                        </label>
+                        <input
+                            type="file"
+                            name="image"
+                            accept="image/*"
+                            onChange={handleChange}
+                            className="w-full px-4 py-3 rounded-xl bg-input border border-border file:mr-4 file:py-1 file:px-3 file:rounded-lg file:border-0 file:bg-muted/50 file:text-foreground file:text-sm hover:file:bg-muted/70 cursor-pointer"
+                        />
+                    </div>
+
+                    {/* Actions */}
+                    <div className="flex justify-end gap-4 border-t border-border pt-6">
+                        <button
+                            type="button"
+                            onClick={() => router.push("/teacher/classrooms")}
+                            className="px-6 py-3 rounded-xl border border-border hover:bg-card/10 transition-colors"
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            type="submit"
+                            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-pink-500 text-white hover:bg-pink-600 transition-colors"
+                        >
+                            <Save className="w-5 h-5" />
+                            Create
+                        </button>
+                    </div>
+                </form>
+            </main>
         </div>
     );
 }
