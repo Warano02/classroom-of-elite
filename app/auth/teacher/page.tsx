@@ -1,10 +1,10 @@
-export const metadata={
-    title:"Login Teacher"
-}
+import LoginForm from "@/components/auth/LoginForm";
+
+export const metadata = {
+  title: "Login Teacher",
+};
 function LoginTeacher() {
-  return (
-    <div>LoginTeacher</div>
-  )
+  return <LoginForm />;
 }
 
-export default LoginTeacher
+export default LoginTeacher;
