@@ -105,7 +105,7 @@ export function DashboardSidebar({
     <Sidebar collapsible="offcanvas" className="lg:border-r-0!" {...props}>
       <SidebarHeader className="p-3 sm:p-4 lg:p-5 pb-0">
         <div className="flex items-center gap-2">
-          <div className="flex size-5 items-center justify-center rounded bg-linear-to-b from-[#6e3ff3] to-[#aa8ef9] text-white">
+          <div className="flex size-5 items-center justify-center rounded bg-accent text-accent-foreground">
             <Atom className="size-3" />
           </div>
           <span className="font-semibold text-base sm:text-lg">Square UI</span>
@@ -114,7 +114,7 @@ export function DashboardSidebar({
 
       <SidebarContent className="px-3 sm:px-4 lg:px-5">
         <div className="flex items-center gap-2 sm:gap-3 rounded-lg border bg-card p-2 sm:p-3 mb-3 sm:mb-4">
-          <div className="flex size-8 sm:size-8.5 items-center justify-center rounded-lg bg-linear-to-b from-[#6e3ff3] to-[#aa8ef9] text-white shrink-0">
+          <div className="flex size-8 sm:size-8.5 items-center justify-center rounded-lg bg-accent text-accent-foreground shrink-0">
             <Atom className="size-4 sm:size-5" />
           </div>
           <div className="flex-1 min-w-0">

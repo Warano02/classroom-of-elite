@@ -46,20 +46,20 @@ export default function Countdown() {
   return (
     <div className="min-h-screen bg-[#0d0f14] flex flex-col items-center justify-center gap-8">
       <p className="text-slate-400 text-sm tracking-widest uppercase">
-        Projet livré dans
+        Project launches in
       </p>
       <div className="grid grid-cols-4 gap-3">
-        <TimeUnit value={timeLeft.days} label="Jours" />
+        <TimeUnit value={timeLeft.days} label="Days" />
         <div className="flex flex-col items-center gap-2 bg-[#13161e] border border-indigo-500/40 rounded-2xl px-8 py-5">
           <span className="text-4xl font-medium text-indigo-400 tabular-nums">
             {String(timeLeft.hours).padStart(2, "0")}
           </span>
           <span className="text-[10px] text-slate-500 uppercase tracking-widest">
-            Heures
+            Hours
           </span>
         </div>
         <TimeUnit value={timeLeft.minutes} label="Minutes" />
-        <TimeUnit value={timeLeft.seconds} label="Secondes" />
+        <TimeUnit value={timeLeft.seconds} label="Seconds" />
       </div>
     </div>
   );

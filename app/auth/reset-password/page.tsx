@@ -1,9 +1,11 @@
+import ResetPasswordPage from "@/components/auth/resetpassword"
+
 export const metadata = {
     title: "Reset password!"
 }
 function ResetPassword() {
     return (
-        <div>ResetPassword</div>
+        <ResetPasswordPage />
     )
 }
 

@@ -5,12 +5,12 @@ import { useParams } from "next/navigation"
 function Ongoing() {
     const { id } = useParams()
     return (
-        <main className="w-full h-screen flex">
-            <div className="w-full h-full flex items-center justify-center">
-                <div className="flex-1 bg-red-500 text-white">
+        <main className="w-full min-h-screen bg-background text-foreground flex items-center justify-center p-6">
+            <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="flex-1 rounded-3xl bg-card p-6 shadow-sm">
                     {id ? `Ongoing Call with ID: ${id}` : "No ID provided"}
                 </div>
-                <div className="flex-1  text-white">
+                <div className="flex-1 rounded-3xl bg-card p-6 shadow-sm">
                     chat du call
                 </div>
             </div>
