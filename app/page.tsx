@@ -1,9 +1,9 @@
 
-import Countdown from './Countdown'
+import Homepage from '@/components/Homepage/homepage'
 
 function page() {
   return (
-    <Countdown/>
+    <Homepage/>
   )
 }
 
