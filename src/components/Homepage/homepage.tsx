@@ -8,16 +8,14 @@ import Stats from './stats';
 import HowItWorks from './Howitworks';
 import Testimonials from './testimoniales';
 import Footer from './footer';
-import { ArrowLeftFromLineIcon, ArrowRight } from 'lucide-react';
+import { ArrowBigRight } from 'lucide-react';
 
 export default function Homepage() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'login' | 'signup'>('home');
-
 
 
   return (
     <div className="size-full overflow-y-auto bg-black">
-      <Header onNavigate={(page) => setCurrentPage(page)} />
+      <Header />
 
       <section className="min-h-screen flex items-center bg-linear-to-br from-gray-900 via-gray-800 to-black px-8 md:px-16 perspective-3d relative overflow-hidden pt-20">
         <div className="bubbles-container">
@@ -66,12 +64,12 @@ export default function Homepage() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <button
-                onClick={() => setCurrentPage('login')}
-                className="bg-pink-600 hover:bg-pink-700 hover:scale-105 text-white px-10 md:px-12 py-4 rounded-full transition-all duration-300 shadow-lg shadow-pink-500/50 hover:shadow-pink-500/70 hover:shadow-xl animate-fade-in-up [animation-delay:400ms] opacity-100 fill-mode-[forwards] transform-3d-button"
-              >
-                Get Started 
-              </button>
+              <a
+                  href="/auth/login"
+                  className=" hidden md:inline-flex items-center justify-center rounded-full bg-linear-to-r from-pink-500 to-violet-500 px-5 py-2 text-2xl font-semibold text-white shadow-lg shadow-pink-500/20 transition duration-200 hover:brightness-110"
+                >
+                  Get Started <ArrowBigRight className="ml-2" />
+            </a>
             </div>
           </div>
 
