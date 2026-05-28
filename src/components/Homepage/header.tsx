@@ -24,7 +24,7 @@ export default function Header({ onNavigate }: HeaderProps = {}) {
           <a href="#features" className="transition-colors duration-200 hover:text-white">Features</a>
           <a href="#how-it-works" className="transition-colors duration-200 hover:text-white">How it works</a>
           <a href="#testimonials" className="transition-colors duration-200 hover:text-white">Testimonials</a>
-          <a href="#contact" className="transition-colors duration-200 hover:text-white">Contact</a>
+          <a href="#contact" className="transition-colors duration-200 hover:text-white">Contact </a>
         </div>
 
         <div className="flex items-center gap-3">

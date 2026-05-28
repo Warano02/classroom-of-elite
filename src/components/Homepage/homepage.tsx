@@ -59,7 +59,7 @@ export default function Homepage() {
               </div>
               <div className="rounded-3xl border border-white/10 bg-white/5 p-5 text-sm text-gray-300">
                 <strong className="text-white">Insightful analytics</strong>
-                <p className="mt-3">Monitor student progress and identify who needs support fast.</p>
+                <p className="mt-3">Monitor student progress and identify who needs support.</p>
               </div>
             </div>
 
