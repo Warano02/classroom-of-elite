@@ -44,7 +44,7 @@ async function TeacherSignupPage() {
   );
 }
 
-export default Page(){
+export default function Page(){
   return (<Suspense>
     <TeacherSignupPage />
   </Suspense>)
