@@ -1,7 +1,6 @@
 import SignupStepper from "@/components/auth/teacher/signup/SignupStepper";
 import axiosInstance from "@/lib/axios";
 import { Metadata } from "next";
-import Page from "../../../user/(root)/collections/[id]/page";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
