@@ -26,6 +26,7 @@ export default function StepLocation({ data, setData, onBack, onError, onSubmit,
     const search = (value: string) => {
         setQuery(value);
         setData((prev) => ({ ...prev, city: "", country: "" }));
+        //@ts-ignore
         clearTimeout(debounce.current);
         if (value.length < 2) { setResults([]); setOpen(false); return; }
         debounce.current = setTimeout(async () => {
