@@ -49,7 +49,7 @@ function MyCourseClient() {
     )
 }
 
-const LoadingContent = () => {
+export const LoadingContent = () => {
     return (<div className="flex-1 w-full overflow-auto">
         <div className="p-4 md:p-6 space-y-6">
 
@@ -69,7 +69,7 @@ const LoadingContent = () => {
         </div>
     </div>)
 }
-const NoCourses = () => {
+export const NoCourses = () => {
     return (
         <div className="flex flex-col items-center justify-center py-12 text-center">
             <div className="size-12 rounded-full bg-muted flex items-center justify-center mb-4">
