@@ -1,7 +1,8 @@
+import RoomContent from "./roomContent"
 
 function ClassRoomOverview() {
     return (
-        <div>ClassRoomOverview</div>
+        <RoomContent />
     )
 }
 
