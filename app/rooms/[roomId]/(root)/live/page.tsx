@@ -1,4 +1,6 @@
 import { Metadata } from "next"
+import LivesPage from "./pageClient"
+import { Suspense } from "react"
 
 export const metadata: Metadata = {
   title: "Live program  - IW"
@@ -6,7 +8,9 @@ export const metadata: Metadata = {
 
 function LiveProgram() {
   return (
-    <div>LiveProgram</div>
+    <Suspense>
+      <LivesPage />
+    </Suspense>
   )
 }
 
