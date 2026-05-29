@@ -3,10 +3,10 @@ import { Metadata } from "next"
 export const metadata: Metadata = {
     title: "Search Course - IW"
 }
-function FindSomeCourse() {
+function LookUpaCourse() {
     return (
-        <div>FindSomeCourse</div>
+        <div>LookUpaCourse</div>
     )
 }
 
-export default FindSomeCourse
+export default LookUpaCourse
