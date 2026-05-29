@@ -51,7 +51,7 @@ function RoomContent() {
         <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
             {
                 Array.from({ length: 4 }).map((_, id) => (
-                    <Skeleton className='h-25' />
+                    <Skeleton key={id} className='h-25' />
                 ))
             }
         </div>
@@ -60,7 +60,7 @@ function RoomContent() {
                 <Skeleton className="w-full py-6" />
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                     {Array.from({ length: 20 }).map((_, index) => (
-                        <Skeleton className='h-52' />
+                        <Skeleton key={index} className='h-52' />
                     ))}
                 </div>
             </div>
