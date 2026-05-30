@@ -35,7 +35,7 @@ function LoginForm() {
         <div className="relative flex w-full flex-col justify-center px-8 py-12 lg:w-120 lg:min-w-105 lg:px-14">
             <div className="mb-12 flex items-center gap-3">
                 <div className="h-9 w-9 animate-pulse rounded-lg bg-white/20" />
-                <span className="text-lg font-bold tracking-tight text-white">Ingenierie web</span>
+                <span className="text-lg font-bold tracking-tight text-white">Classroom of Elite</span>
             </div>
 
             <h2 className="mb-1 text-3xl font-bold tracking-tight text-white">Welcome back </h2>

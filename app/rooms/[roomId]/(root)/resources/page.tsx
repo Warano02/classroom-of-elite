@@ -1,4 +1,6 @@
 import { Metadata } from "next"
+import { ResourceList } from "./ressources"
+import { Suspense } from "react"
 
 export const metadata: Metadata = {
   title: "Classroom Ressources for course - IW"
@@ -6,7 +8,11 @@ export const metadata: Metadata = {
 
 function Ressources() {
   return (
-    <div>Ressources</div>
+    <div className="p-4">
+      <Suspense>
+        <ResourceList />
+      </Suspense>
+    </div>
   )
 }
 
