@@ -1,4 +1,5 @@
 "use client"
+
 export default function Testimonials() {
   const testimonials = [
     {
@@ -22,15 +23,15 @@ export default function Testimonials() {
   ];
 
   return (
-    <section id="testimonials" className="py-24 bg-gray-900 relative overflow-hidden">
-      <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent"></div>
+    <section id="testimonials" className="py-24 bg-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-linear-to-t from-background/50 to-transparent"></div>
 
       <div className="max-w-7xl mx-auto px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-5xl mb-4 text-white">
+          <h2 className="text-5xl mb-4 text-foreground">
             Trusted by <span className="text-pink-500">educators</span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Discover what our instructors think about the platform
           </p>
         </div>
@@ -39,18 +40,18 @@ export default function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-gray-800/50 backdrop-blur-sm p-8 rounded-xl border border-pink-500/20 hover:border-pink-500/50 transition-all duration-300"
+              className="bg-card/50 backdrop-blur-sm p-8 rounded-xl border border-border hover:border-pink-500/50 transition-all duration-300"
             >
               <div className="flex items-center mb-6">
                 <div className="w-12 h-12 bg-linear-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center text-white mr-4">
                   {testimonial.avatar}
                 </div>
                 <div>
-                  <div className="text-white">{testimonial.name}</div>
-                  <div className="text-sm text-gray-400">{testimonial.role}</div>
+                  <div className="text-card-foreground">{testimonial.name}</div>
+                  <div className="text-sm text-muted-foreground">{testimonial.role}</div>
                 </div>
               </div>
-              <p className="text-gray-300 italic">"{testimonial.content}"</p>
+              <p className="text-muted-foreground italic">"{testimonial.content}"</p>
               <div className="flex gap-1 mt-4">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="w-5 h-5 text-pink-500" fill="currentColor" viewBox="0 0 20 20">

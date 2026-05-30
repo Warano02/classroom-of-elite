@@ -1,4 +1,5 @@
 "use client"
+
 export default function Stats() {
   const stats = [
     { number: "500+", label: "Instructors" },
@@ -19,7 +20,7 @@ export default function Stats() {
           {stats.map((stat, index) => (
             <div key={index} className="text-center">
               <div className="text-5xl mb-2 text-white">{stat.number}</div>
-              <div className="text-lg text-pink-100">{stat.label}</div>
+              <div className="text-lg text-white/70">{stat.label}</div>
             </div>
           ))}
         </div>

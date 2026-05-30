@@ -1,4 +1,5 @@
 "use client"
+
 export default function Features() {
   const features = [
     {
@@ -58,15 +59,15 @@ export default function Features() {
   ];
 
   return (
-    <section id="features" className="py-24 bg-gray-900 relative overflow-hidden">
-      <div className="absolute inset-0 bg-linear-to-b from-black/50 to-transparent"></div>
+    <section id="features" className="py-24 bg-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-linear-to-b from-background/50 to-transparent"></div>
 
       <div className="max-w-7xl mx-auto px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-5xl mb-4 text-white">
+          <h2 className="text-5xl mb-4 text-foreground">
             Powerful tools for <span className="text-pink-500">teaching</span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Everything you need to create an outstanding learning experience
           </p>
         </div>
@@ -75,13 +76,12 @@ export default function Features() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-gray-800/50 backdrop-blur-sm p-8 rounded-xl border border-pink-500/20 hover:border-pink-500/50 transition-all duration-300 hover:transform hover:scale-105"
-            >
+              className="bg-card/50 backdrop-blur-sm p-8 rounded-xl border border-border hover:border-pink-500/50 transition-all duration-300 hover:transform hover:scale-105">
               <div className="w-16 h-16 bg-linear-to-br from-pink-500 to-purple-600 rounded-lg flex items-center justify-center mb-6 text-white">
                 {feature.icon}
               </div>
-              <h3 className="text-xl mb-3 text-white">{feature.title}</h3>
-              <p className="text-gray-400">{feature.description}</p>
+              <h3 className="text-xl mb-3 text-card-foreground">{feature.title}</h3>
+              <p className="text-muted-foreground">{feature.description}</p>
             </div>
           ))}
         </div>
