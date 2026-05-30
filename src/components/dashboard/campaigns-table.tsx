@@ -138,7 +138,11 @@ export function CampaignsTable() {
           </Button>
         ),
         cell: ({ row }) => (
+<<<<<<< HEAD
           <div className="flex items-center gap-2 min-w-[160px]">
+=======
+          <div className="flex items-center gap-2 min-w-40">
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
             <Avatar className="size-6 shrink-0">
               <AvatarImage src={`https://api.dicebear.com/9.x/glass/svg?seed=${row.original.avatarSeed}`} />
               <AvatarFallback className="text-xs">{row.original.name[0]}</AvatarFallback>
@@ -221,7 +225,11 @@ export function CampaignsTable() {
           </Button>
         ),
         cell: ({ row }) => (
+<<<<<<< HEAD
           <div className="flex items-center gap-2 min-w-[80px]">
+=======
+          <div className="flex items-center gap-2 min-w-20">
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
             <Progress value={row.original.percentage} className="h-1.5 flex-1" />
           </div>
         ),
@@ -408,7 +416,11 @@ export function CampaignsTable() {
           <div className="flex items-center gap-2">
             <span className="hidden sm:inline">Rows per page</span>
             <Select value={String(pageSize)} onValueChange={(v) => table.setPageSize(Number(v))}>
+<<<<<<< HEAD
               <SelectTrigger className="h-8 w-[70px]">
+=======
+              <SelectTrigger className="h-8 w-17.5">
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>

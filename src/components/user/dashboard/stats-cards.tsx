@@ -2,7 +2,10 @@
 
 import { Bookmark, Star, Tag, FolderOpen } from "lucide-react";
 import { useBookmarksStore } from "@/store/bookmarks-store";
+<<<<<<< HEAD
 import { collections, tags } from "@/mock-data/bookmarks";
+=======
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
 
 const stats = [
   {
@@ -11,6 +14,7 @@ const stats = [
     color: "bg-blue-500/10 text-blue-500",
   },
   {
+<<<<<<< HEAD
     label: "Favorites",
     icon: Star,
     color: "bg-amber-500/10 text-amber-500",
@@ -28,6 +32,36 @@ export function StatsCards() {
 
   return (
     <div className="grid grid-cols-2  gap-4">
+=======
+    label: "Class Course",
+    icon: FolderOpen,
+    color: "bg-amber-500/10 text-amber-500",
+  },
+  {
+    label: "Collections",
+    icon: FolderOpen,
+    color: "bg-violet-500/10 text-violet-500",
+  },
+  {
+    label: "Tags Used",
+    icon: Tag,
+    color: "bg-emerald-500/10 text-emerald-500",
+  },
+];
+
+export function StatsCards({total,classes,collection,tags}:{total:number,classes:number,collection:number,tags:number}) {
+  const { bookmarks } = useBookmarksStore();
+
+  const values = [
+    total,
+   classes,
+    collection,
+    tags,
+  ];
+
+  return (
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
       {stats.map((stat, index) => (
         <div
           key={stat.label}

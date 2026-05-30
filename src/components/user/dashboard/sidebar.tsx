@@ -47,15 +47,26 @@ import {
   Tag,
   Archive,
   Trash2,
+<<<<<<< HEAD
   BookOpenCheck,
+=======
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
   BookAIcon,
   Mail,
   House,
   Bell,
+<<<<<<< HEAD
   BookCopy,
 } from "lucide-react";
 import { useBookmarksStore } from "@/store/bookmarks-store";
 import { collections, tags } from "@/mock-data/bookmarks";
+=======
+} from "lucide-react";
+import { useBookmarksStore } from "@/store/bookmarks-store";
+import { collections, tags } from "@/mock-data/bookmarks";
+import { useAuthStore } from "@/store/auth.store";
+import { useUserSocket } from "@/store/user-io.store";
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
 
 const collectionIcons: Record<string, React.ElementType> = {
   bookmark: Bookmark,
@@ -67,6 +78,7 @@ const collectionIcons: Record<string, React.ElementType> = {
 };
 
 const navItems = [
+<<<<<<< HEAD
   { icon: BookAIcon, label: "Course", href: "/student" },
   { icon: BookCopy, label: "Exam", href: "/student/exam" },
   { icon: Star, label: "Favorites", href: "/student/favorites" },
@@ -75,12 +87,25 @@ const navItems = [
   { icon: Bell, label: "Notifications", href: "/student/notifications" },
   { icon: Trash2, label: "Trash", href: "/student/trash" },
   { icon: Settings, label: "Settings", href: "/student/settings" },
+=======
+  { icon: BookAIcon, label: "Course", href: "/user" },
+  { icon: House, label: "Classroom", href: "/user/classrooms" },
+  { icon: Star, label: "Favorites", href: "/user/favorites" },
+  { icon: Mail, label: "Inbox", href: "/user/inbox" },
+  { icon: Bell, label: "Notifications", href: "/user/notifications" },
+  { icon: Archive, label: "Archive", href: "/user/archive" },
+  { icon: Trash2, label: "Trash", href: "/user/trash" },
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
 ];
 
 export function BookmarksSidebar({
   ...props
 }: React.ComponentProps<typeof Sidebar>) {
   const pathname = usePathname();
+<<<<<<< HEAD
+=======
+  const { initSocket, disconnectSocket } = useUserSocket()
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
   const [collectionsOpen, setCollectionsOpen] = React.useState(true);
   const [tagsOpen, setTagsOpen] = React.useState(true);
   const {
@@ -91,8 +116,15 @@ export function BookmarksSidebar({
     clearTags,
   } = useBookmarksStore();
 
+<<<<<<< HEAD
   const isHomePage = pathname === "/student";
 
+=======
+  const { logout, user } = useAuthStore()
+
+  const isHomePage = pathname === "/user";
+  initSocket(user?._id || '')
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
   return (
     <Sidebar collapsible="offcanvas" className="lg:border-r-0!" {...props}>
       <SidebarHeader className="p-5 pb-0">
@@ -100,6 +132,7 @@ export function BookmarksSidebar({
           <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center gap-2 outline-none cursor-pointer">
               <div className="size-7 rounded-full overflow-hidden bg-linear-to-br from-blue-400 via-indigo-500 to-violet-500 flex items-center justify-center ring-1 ring-white/40 shadow-lg" />
+<<<<<<< HEAD
               <span className="font-medium text-muted-foreground">
                 Square UI
               </span>
@@ -107,19 +140,64 @@ export function BookmarksSidebar({
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start" className="w-56">
               <DropdownMenuItem className="text-destructive">
+=======
+              <span className="font-medium text-muted-foreground">{user?.name}</span>
+              <ChevronDown className="size-3 text-muted-foreground" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="w-56">
+              <DropdownMenuLabel className="text-muted-foreground text-xs font-medium">
+                Workspaces
+              </DropdownMenuLabel>
+              {/* <DropdownMenuItem>
+                <div className="size-5 rounded-full bg-linear-to-br from-blue-400 via-indigo-500 to-violet-500 mr-2" />
+                Square UI
+                <Check className="size-4 ml-auto" />
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <div className="size-5 rounded-full bg-linear-to-br from-emerald-400 to-cyan-500 mr-2" />
+                Personal
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <div className="size-5 rounded-full bg-linear-to-br from-orange-400 to-rose-500 mr-2" />
+                Work
+              </DropdownMenuItem>
+
+              <DropdownMenuSeparator /> */}
+
+              <DropdownMenuItem className="cursor-pointer">
+                <Link href={"/user/settings"} className="flex gap-2">
+                  <Settings className="size-4 mr-2" />
+                  Workspace Settings</Link>
+              </DropdownMenuItem>
+
+              <DropdownMenuSeparator />
+
+              <DropdownMenuItem onClick={() => { disconnectSocket(); logout() }} className="text-destructive cursor-pointer">
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
                 <LogOut className="size-4 mr-2" />
                 Log out
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
+<<<<<<< HEAD
           <Avatar className="size-6.5">
             <AvatarImage src="/ln.png" />
             <AvatarFallback>LN</AvatarFallback>
+=======
+
+          <Avatar className="size-7.5 shrink-0">
+            <AvatarImage src={user?.avatar || ''} />
+            <AvatarFallback>{user?.name.slice(0, 2).toLocaleUpperCase() || "UN"} </AvatarFallback>
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
           </Avatar>
         </div>
       </SidebarHeader>
 
       <SidebarContent className="px-5 pt-5">
+<<<<<<< HEAD
+=======
+        <InputSide />
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
 
         <SidebarGroup className="p-0">
           <SidebarGroupContent>
@@ -142,6 +220,95 @@ export function BookmarksSidebar({
           </SidebarGroupContent>
         </SidebarGroup>
 
+<<<<<<< HEAD
+=======
+        {collections.length > 0 && <SidebarGroup className="p-0">
+          <SidebarGroupLabel className="flex items-center gap-1.5 px-0 text-[10px] font-semibold tracking-wider text-muted-foreground">
+            <button onClick={() => setCollectionsOpen(!collectionsOpen)} className="flex items-center gap-1.5 cursor-pointer" >
+              <ChevronDown
+                className={cn(
+                  "size-3.5 transition-transform",
+                  !collectionsOpen && "-rotate-90"
+                )}
+              />
+              COLLECTIONS
+            </button>
+          </SidebarGroupLabel>
+          {collectionsOpen && (
+            <SidebarGroupContent>
+              <SidebarMenu className="mt-2">
+                {collections.map((collection) => {
+                  const IconComponent =
+                    collectionIcons[collection.icon] || Folder;
+                  const isActive =
+                    isHomePage && selectedCollection === collection._id;
+                  return (
+                    <SidebarMenuItem key={collection._id}>
+                      <SidebarMenuButton
+                        asChild
+                        isActive={isActive}
+                        className="h-9.5"
+                      >
+                        <Link
+                          href="/"
+                          onClick={() => {
+                            setSelectedCollection(collection._id);
+                            clearTags();
+                          }}
+                        >
+                          <IconComponent className="size-5" />
+                          <span className="flex-1">{collection.name}</span>
+                          <span className="text-muted-foreground text-xs">
+                            {collection.count}
+                          </span>
+                          {isActive && (
+                            <ChevronRight className="size-4 text-muted-foreground opacity-60" />
+                          )}
+                        </Link>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  );
+                })}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          )}
+        </SidebarGroup>}
+
+        {tags.length > 0 && <SidebarGroup className="p-0">
+          <SidebarGroupLabel className="flex items-center gap-1.5 px-0 text-[10px] font-semibold tracking-wider text-muted-foreground">
+            <button onClick={() => setTagsOpen(!tagsOpen)} className="flex items-center gap-1.5 cursor-pointer">
+              <ChevronDown className={cn("size-3.5 transition-transform", !tagsOpen && "-rotate-90")} />
+              TAGS
+            </button>
+            {selectedTags.length > 0 && (
+              <button onClick={(e) => { e.stopPropagation(); clearTags(); }} className="ml-auto text-[10px] text-muted-foreground hover:text-foreground">
+                Clear
+              </button>
+            )}
+          </SidebarGroupLabel>
+          {tagsOpen && (
+            <SidebarGroupContent>
+              <div className="flex flex-wrap gap-1.5 mt-2">
+                {tags.map((tag) => (
+                  <button
+                    key={tag._id}
+                    onClick={() => toggleTag(tag._id)}
+                    className={cn(
+                      "inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs font-medium transition-colors",
+                      selectedTags.includes(tag._id)
+                        ? "bg-primary text-primary-foreground"
+                        : tag.color
+                    )}
+                  >
+                    <Tag className="size-3" />
+                    {tag.name}
+                  </button>
+                ))}
+              </div>
+            </SidebarGroupContent>
+          )}
+        </SidebarGroup>}
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
       </SidebarContent>
 
 

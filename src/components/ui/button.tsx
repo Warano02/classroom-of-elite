@@ -9,6 +9,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
+<<<<<<< HEAD
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
         destructive:
           "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
@@ -19,6 +20,18 @@ const buttonVariants = cva(
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
+=======
+        default: "cursor-pointer disabled:cursor-not-allowed bg-primary text-primary-foreground hover:bg-primary/90",
+        destructive:
+          "cursor-pointer disabled:cursor-not-allowed bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
+        outline:
+          "cursor-pointer disabled:cursor-not-allowed border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
+        secondary:
+          "cursor-pointer disabled:cursor-not-allowed bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        ghost:
+          "cursor-pointer disabled:cursor-not-allowed hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
+        link: "cursor-pointer disabled:cursor-not-allowed text-primary underline-offset-4 hover:underline",
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",

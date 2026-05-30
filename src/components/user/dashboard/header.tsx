@@ -3,6 +3,10 @@
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
+<<<<<<< HEAD
+=======
+import { Input } from "@/components/ui/input";
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
 import { ThemeToggle } from "@/components/theme-toggle";
 import {
   DropdownMenu,
@@ -12,9 +16,23 @@ import {
   DropdownMenuSeparator,
   DropdownMenuLabel,
 } from "@/components/ui/dropdown-menu";
+<<<<<<< HEAD
 import { LayoutGrid, List, SlidersHorizontal, ArrowUpDown, Check, } from "lucide-react";
 import { useBookmarksStore } from "@/store/bookmarks-store";
 import { cn } from "@/lib/utils";
+=======
+import {
+  Search,
+  LayoutGrid,
+  List,
+  SlidersHorizontal,
+  ArrowUpDown,
+  Check,
+} from "lucide-react";
+import { useBookmarksStore } from "@/store/bookmarks-store";
+import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
 
 interface BookmarksHeaderProps {
   title?: string;
@@ -35,6 +53,7 @@ const filterOptions = [
 ] as const;
 
 export function BookmarksHeader({ title = "Bookmarks" }: BookmarksHeaderProps) {
+<<<<<<< HEAD
   const {
     viewMode,
     setViewMode,
@@ -49,6 +68,14 @@ export function BookmarksHeader({ title = "Bookmarks" }: BookmarksHeaderProps) {
   const currentSort = sortOptions.find((opt) => opt.value === sortBy);
   const currentFilter = filterOptions.find((opt) => opt.value === filterType);
 
+=======
+  const pathname = usePathname()
+  const { viewMode, setViewMode, searchQuery, setSearchQuery, sortBy, setSortBy, filterType, setFilterType, } = useBookmarksStore();
+
+  const currentSort = sortOptions.find((opt) => opt.value === sortBy);
+  const currentFilter = filterOptions.find((opt) => opt.value === filterType);
+  const isHome = pathname == "/user"
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
   return (
     <header className="w-full border-b">
       <div className="flex items-center justify-between h-14 px-4">
@@ -59,7 +86,19 @@ export function BookmarksHeader({ title = "Bookmarks" }: BookmarksHeaderProps) {
         </div>
 
         <div className="flex items-center gap-2">
+<<<<<<< HEAD
 
+=======
+          <div className="relative hidden md:block">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
+            <Input
+              placeholder="Search..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-9 w-64 h-9"
+            />
+          </div>
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
 
           <div className="flex items-center border rounded-md p-0.5">
             <Button
@@ -80,6 +119,7 @@ export function BookmarksHeader({ title = "Bookmarks" }: BookmarksHeaderProps) {
             </Button>
           </div>
 
+<<<<<<< HEAD
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="sm" className="hidden sm:flex">
@@ -150,6 +190,87 @@ export function BookmarksHeader({ title = "Bookmarks" }: BookmarksHeaderProps) {
           <Separator orientation="vertical" className="h-5 hidden sm:block" />
 
           <ThemeToggle />
+=======
+          {
+            isHome && (
+              <>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="outline" size="sm" className="hidden sm:flex">
+                      <ArrowUpDown className="size-4" />
+                      <span className="hidden lg:inline">{currentSort?.label.split(" ")[0]}</span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-48">
+                    <DropdownMenuLabel className="text-xs text-muted-foreground">
+                      Sort by
+                    </DropdownMenuLabel>
+                    {sortOptions.map((option) => (
+                      <DropdownMenuItem
+                        key={option.value}
+                        onClick={() => setSortBy(option.value)}
+                        className="flex items-center justify-between"
+                      >
+                        {option.label}
+                        {sortBy === option.value && <Check className="size-4" />}
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className={cn(
+                        "hidden sm:flex",
+                        filterType !== "all" && "border-primary text-primary"
+                      )}
+                    >
+                      <SlidersHorizontal className="size-4" />
+                      <span className="hidden lg:inline">
+                        {filterType !== "all" ? currentFilter?.label : "Filter"}
+                      </span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-48">
+                    <DropdownMenuLabel className="text-xs text-muted-foreground">
+                      Filter by
+                    </DropdownMenuLabel>
+                    {filterOptions.map((option) => (
+                      <DropdownMenuItem
+                        key={option.value}
+                        onClick={() => setFilterType(option.value)}
+                        className="flex items-center justify-between"
+                      >
+                        {option.label}
+                        {filterType === option.value && <Check className="size-4" />}
+                      </DropdownMenuItem>
+                    ))}
+                    {filterType !== "all" && (
+                      <>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem
+                          onClick={() => setFilterType("all")}
+                          className="text-muted-foreground"
+                        >
+                          Clear filter
+                        </DropdownMenuItem>
+                      </>
+                    )}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </>
+            )
+          }
+
+          <Separator orientation="vertical" className="h-5 hidden sm:block" />
+
+          <ThemeToggle />
+
+
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
         </div>
       </div>
     </header>

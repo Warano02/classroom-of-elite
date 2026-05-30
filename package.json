@@ -10,7 +10,11 @@
     "url": "https://github.com/warano02/marketing-dashboard/issues"
   },
   "scripts": {
+<<<<<<< HEAD
     "dev": "next dev",
+=======
+    "dev": "next dev -p 3001",
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
@@ -26,11 +30,29 @@
     "@radix-ui/react-separator": "^1.1.8",
     "@radix-ui/react-slot": "^1.2.4",
     "@radix-ui/react-tooltip": "^1.2.8",
+<<<<<<< HEAD
     "@tanstack/react-table": "^8.21.3",
+=======
+    "@stream-io/video-react-sdk": "^1.37.0",
+    "@tanstack/react-table": "^8.21.3",
+    "@tiptap/extension-highlight": "^3.22.5",
+    "@tiptap/extension-image": "^3.22.5",
+    "@tiptap/extension-link": "^3.22.5",
+    "@tiptap/extension-placeholder": "^3.22.5",
+    "@tiptap/extension-text-align": "^3.22.5",
+    "@tiptap/extension-underline": "^3.22.5",
+    "@tiptap/pm": "^3.22.5",
+    "@tiptap/react": "^3.22.5",
+    "@tiptap/starter-kit": "^3.22.5",
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
     "ajv": ">=6.14.0",
     "axios": "^1.15.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+<<<<<<< HEAD
+=======
+    "date-fns": "^4.3.0",
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
     "diff": "^8.0.3",
     "js-yaml": "^4.1.1",
     "lucide-react": "^0.553.0",
@@ -39,19 +61,36 @@
     "next-themes": "^0.4.6",
     "qs": "^6.14.1",
     "radix-ui": "^1.4.3",
+<<<<<<< HEAD
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "recharts": "^2.15.4",
     "socket.io-client": "^4.8.3",
     "tailwind-merge": "^3.4.0",
     "usehooks-ts": "^3.1.1",
+=======
+    "react": "19.2.4",
+    "react-day-picker": "^10.0.1",
+    "react-dom": "19.2.4",
+    "recharts": "^2.15.4",
+    "socket.io-client": "^4.8.3",
+    "sonner": "^2.0.7",
+    "tailwind-merge": "^3.4.0",
+    "usehooks-ts": "^3.1.1",
+    "vaul": "^1.1.2",
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
     "zustand": "^5.0.12"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+<<<<<<< HEAD
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
+=======
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
     "eslint": "^9",
     "eslint-config-next": "16.2.3",
     "tailwindcss": "^4",
