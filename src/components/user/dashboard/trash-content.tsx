@@ -11,8 +11,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Trash2, MoreHorizontal, RotateCcw, XCircle, ExternalLink } from "lucide-react";
 import Image from "next/image";
-import { type Bookmark } from "@/mock-data/bookmarks";
 import { cn } from "@/lib/utils";
+import { Bookmark } from "@/types";
 
 function TrashedBookmarkCard({ bookmark }: { bookmark: Bookmark }) {
   const { restoreFromTrash, permanentlyDelete } = useBookmarksStore();
@@ -31,14 +31,14 @@ function TrashedBookmarkCard({ bookmark }: { bookmark: Bookmark }) {
 
       <div className="flex-1 min-w-0">
         <h3 className="font-medium truncate">{bookmark.title}</h3>
-        <p className="text-sm text-muted-foreground truncate">{bookmark.url}</p>
+        <p className="text-sm text-muted-foreground truncate">{bookmark._id}</p>
       </div>
 
       <div className="flex items-center gap-1">
         <Button
           variant="outline"
           size="sm"
-          onClick={() => restoreFromTrash(bookmark.id)}
+          onClick={() => restoreFromTrash(bookmark._id)}
         >
           <RotateCcw className="size-4 mr-1" />
           Restore
@@ -51,7 +51,7 @@ function TrashedBookmarkCard({ bookmark }: { bookmark: Bookmark }) {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuItem
-              onClick={() => window.open(bookmark.url, "_blank")}
+              onClick={() => window.open(bookmark._id, "_blank")}
             >
               <ExternalLink className="size-4 mr-2" />
               Open URL
@@ -59,7 +59,7 @@ function TrashedBookmarkCard({ bookmark }: { bookmark: Bookmark }) {
             <DropdownMenuSeparator />
             <DropdownMenuItem
               className="text-destructive"
-              onClick={() => permanentlyDelete(bookmark.id)}
+              onClick={() => permanentlyDelete(bookmark._id)}
             >
               <XCircle className="size-4 mr-2" />
               Delete Permanently
@@ -100,7 +100,7 @@ export function TrashContent() {
 
         <div className="flex flex-col gap-2">
           {filteredTrash.map((bookmark) => (
-            <TrashedBookmarkCard key={bookmark.id} bookmark={bookmark} />
+            <TrashedBookmarkCard key={bookmark._id} bookmark={bookmark} />
           ))}
         </div>
 

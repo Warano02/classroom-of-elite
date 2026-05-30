@@ -123,7 +123,7 @@ export function CreateEventDialog({
                       setDate(selectedDate);
                       setDatePickerOpen(false);
                     }}
-                    initialFocus
+                    
                   />
                 </PopoverContent>
               </Popover>

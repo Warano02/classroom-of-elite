@@ -1,5 +1,4 @@
 import CourseOverview from '@/components/user/courses/CourseOverview'
-import { bookmarks } from '@/mock-data/bookmarks'
 import type { Metadata, ResolvingMetadata } from 'next'
 
 type Props = {
@@ -10,10 +9,14 @@ type Props = {
 export async function generateMetadata({ params, searchParams }: Props, parent: ResolvingMetadata): Promise<Metadata> {
   try {
     const { id } = await params
-    const elem = bookmarks.find(b => b.id === id)
+    // const elem = bookmarks.find(b => b.id === id)
 
+    // return {
+    //   title: `${elem?.title ? elem.title + " - " : " "}Course Overview`,
+    //   description: ""
+    // }
     return {
-      title: `${elem?.title ? elem.title + " - " : " "}Course Overview`,
+      title: "Course Overview",
       description: ""
     }
   } catch (e) {
@@ -26,7 +29,7 @@ export async function generateMetadata({ params, searchParams }: Props, parent: 
 
 function ViewCourse() {
   return (
-    <CourseOverview/>
+    <CourseOverview />
   )
 }
 

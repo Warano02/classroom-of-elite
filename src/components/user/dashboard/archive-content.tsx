@@ -11,12 +11,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Archive, MoreHorizontal, RotateCcw, Trash2, ExternalLink } from "lucide-react";
 import Image from "next/image";
-import { tags as allTags, type Bookmark } from "@/mock-data/bookmarks";
+import { tags as allTags  } from "@/mock-data/bookmarks";
 import { cn } from "@/lib/utils";
+import { Bookmark } from "@/types";
 
 function ArchivedBookmarkCard({ bookmark }: { bookmark: Bookmark }) {
   const { restoreFromArchive, trashBookmark } = useBookmarksStore();
-  const bookmarkTags = allTags.filter((tag) => bookmark.tags.includes(tag.id));
+  const bookmarkTags = allTags.filter((tag) => bookmark.tags.includes(tag._id));
 
   return (
     <div className="group flex items-center gap-4 p-4 rounded-lg border bg-card hover:bg-accent/50 transition-colors">
@@ -37,7 +38,7 @@ function ArchivedBookmarkCard({ bookmark }: { bookmark: Bookmark }) {
             <div className="hidden sm:flex items-center gap-1">
               {bookmarkTags.slice(0, 2).map((tag) => (
                 <span
-                  key={tag.id}
+                  key={tag._id}
                   className={cn(
                     "inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium",
                     tag.color
@@ -49,14 +50,14 @@ function ArchivedBookmarkCard({ bookmark }: { bookmark: Bookmark }) {
             </div>
           )}
         </div>
-        <p className="text-sm text-muted-foreground truncate">{bookmark.url}</p>
+        <p className="text-sm text-muted-foreground truncate">{bookmark._id}</p>
       </div>
 
       <div className="flex items-center gap-1">
         <Button
           variant="outline"
           size="sm"
-          onClick={() => restoreFromArchive(bookmark.id)}
+          onClick={() => restoreFromArchive(bookmark._id)}
         >
           <RotateCcw className="size-4 mr-1" />
           Restore
@@ -69,7 +70,7 @@ function ArchivedBookmarkCard({ bookmark }: { bookmark: Bookmark }) {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuItem
-              onClick={() => window.open(bookmark.url, "_blank")}
+              onClick={() => window.open(bookmark._id, "_blank")}
             >
               <ExternalLink className="size-4 mr-2" />
               Open URL
@@ -78,8 +79,8 @@ function ArchivedBookmarkCard({ bookmark }: { bookmark: Bookmark }) {
             <DropdownMenuItem
               className="text-destructive"
               onClick={() => {
-                restoreFromArchive(bookmark.id);
-                setTimeout(() => trashBookmark(bookmark.id), 0);
+                restoreFromArchive(bookmark._id);
+                setTimeout(() => trashBookmark(bookmark._id), 0);
               }}
             >
               <Trash2 className="size-4 mr-2" />
@@ -114,7 +115,7 @@ export function ArchiveContent() {
 
         <div className="flex flex-col gap-2">
           {archivedBookmarks.map((bookmark) => (
-            <ArchivedBookmarkCard key={bookmark.id} bookmark={bookmark} />
+            <ArchivedBookmarkCard key={bookmark._id} bookmark={bookmark} />
           ))}
         </div>
 
