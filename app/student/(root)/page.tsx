@@ -16,6 +16,7 @@ export default function StudentDashboard() {
       <BookmarksHeader title="Mon Tableau de Bord" />
 
       <div className="flex-1 w-full overflow-auto">
+        
         <div className="p-4 md:p-6 space-y-6">
 
           {/* ── Bienvenue ── */}
