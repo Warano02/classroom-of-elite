@@ -47,15 +47,26 @@ import {
   Tag,
   Archive,
   Trash2,
+<<<<<<< HEAD
+  BookOpenCheck,
+=======
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
   BookAIcon,
   Mail,
   House,
   Bell,
+<<<<<<< HEAD
+  BookCopy,
+} from "lucide-react";
+import { useBookmarksStore } from "@/store/bookmarks-store";
+import { collections, tags } from "@/mock-data/bookmarks";
+=======
 } from "lucide-react";
 import { useBookmarksStore } from "@/store/bookmarks-store";
 import { collections, tags } from "@/mock-data/bookmarks";
 import { useAuthStore } from "@/store/auth.store";
 import { useUserSocket } from "@/store/user-io.store";
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
 
 const collectionIcons: Record<string, React.ElementType> = {
   bookmark: Bookmark,
@@ -67,6 +78,16 @@ const collectionIcons: Record<string, React.ElementType> = {
 };
 
 const navItems = [
+<<<<<<< HEAD
+  { icon: BookAIcon, label: "Course", href: "/student" },
+  { icon: BookCopy, label: "Exam", href: "/student/exam" },
+  { icon: Star, label: "Favorites", href: "/student/favorites" },
+  { icon: Mail, label: "Inbox", href: "/student/inbox" },
+  { icon: BookOpenCheck, label: "Assigment", href: "/student/assigment" },
+  { icon: Bell, label: "Notifications", href: "/student/notifications" },
+  { icon: Trash2, label: "Trash", href: "/student/trash" },
+  { icon: Settings, label: "Settings", href: "/student/settings" },
+=======
   { icon: BookAIcon, label: "Course", href: "/user" },
   { icon: House, label: "Classroom", href: "/user/classrooms" },
   { icon: Star, label: "Favorites", href: "/user/favorites" },
@@ -74,13 +95,17 @@ const navItems = [
   { icon: Bell, label: "Notifications", href: "/user/notifications" },
   { icon: Archive, label: "Archive", href: "/user/archive" },
   { icon: Trash2, label: "Trash", href: "/user/trash" },
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
 ];
 
 export function BookmarksSidebar({
   ...props
 }: React.ComponentProps<typeof Sidebar>) {
   const pathname = usePathname();
+<<<<<<< HEAD
+=======
   const { initSocket, disconnectSocket } = useUserSocket()
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
   const [collectionsOpen, setCollectionsOpen] = React.useState(true);
   const [tagsOpen, setTagsOpen] = React.useState(true);
   const {
@@ -91,10 +116,15 @@ export function BookmarksSidebar({
     clearTags,
   } = useBookmarksStore();
 
+<<<<<<< HEAD
+  const isHomePage = pathname === "/student";
+
+=======
   const { logout, user } = useAuthStore()
 
   const isHomePage = pathname === "/user";
   initSocket(user?._id || '')
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
   return (
     <Sidebar collapsible="offcanvas" className="lg:border-r-0!" {...props}>
       <SidebarHeader className="p-5 pb-0">
@@ -102,6 +132,15 @@ export function BookmarksSidebar({
           <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center gap-2 outline-none cursor-pointer">
               <div className="size-7 rounded-full overflow-hidden bg-linear-to-br from-blue-400 via-indigo-500 to-violet-500 flex items-center justify-center ring-1 ring-white/40 shadow-lg" />
+<<<<<<< HEAD
+              <span className="font-medium text-muted-foreground">
+                Square UI
+              </span>
+              <ChevronDown className="size-3 text-muted-foreground" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="w-56">
+              <DropdownMenuItem className="text-destructive">
+=======
               <span className="font-medium text-muted-foreground">{user?.name}</span>
               <ChevronDown className="size-3 text-muted-foreground" />
             </DropdownMenuTrigger>
@@ -134,21 +173,31 @@ export function BookmarksSidebar({
               <DropdownMenuSeparator />
 
               <DropdownMenuItem onClick={() => { disconnectSocket(); logout() }} className="text-destructive cursor-pointer">
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
                 <LogOut className="size-4 mr-2" />
                 Log out
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
+<<<<<<< HEAD
+          <Avatar className="size-6.5">
+            <AvatarImage src="/ln.png" />
+            <AvatarFallback>LN</AvatarFallback>
+=======
 
           <Avatar className="size-7.5 shrink-0">
             <AvatarImage src={user?.avatar || ''} />
             <AvatarFallback>{user?.name.slice(0, 2).toLocaleUpperCase() || "UN"} </AvatarFallback>
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
           </Avatar>
         </div>
       </SidebarHeader>
 
       <SidebarContent className="px-5 pt-5">
+<<<<<<< HEAD
+=======
         <InputSide />
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
 
         <SidebarGroup className="p-0">
           <SidebarGroupContent>
@@ -171,6 +220,8 @@ export function BookmarksSidebar({
           </SidebarGroupContent>
         </SidebarGroup>
 
+<<<<<<< HEAD
+=======
         {collections.length > 0 && <SidebarGroup className="p-0">
           <SidebarGroupLabel className="flex items-center gap-1.5 px-0 text-[10px] font-semibold tracking-wider text-muted-foreground">
             <button onClick={() => setCollectionsOpen(!collectionsOpen)} className="flex items-center gap-1.5 cursor-pointer" >
@@ -257,6 +308,7 @@ export function BookmarksSidebar({
             </SidebarGroupContent>
           )}
         </SidebarGroup>}
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
       </SidebarContent>
 
 

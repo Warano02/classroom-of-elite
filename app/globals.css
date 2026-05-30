@@ -49,6 +49,19 @@
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
+<<<<<<< HEAD
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+=======
   --card: rgb(247, 119, 247) (243, 190, 199) (80.072% 0.10656 329.702);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(77.058% 0.19892 329.789);
@@ -60,11 +73,28 @@
   --muted: oklch(74.902% 0.21312 338.239);
   --muted-foreground: oklch(13.441% 0.00002 271.152);
   --accent: oklch(84.034% 0.10247 332.431);
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.58 0.22 27);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
+<<<<<<< HEAD
+  --chart-1: oklch(0.809 0.105 251.813);
+  --chart-2: oklch(0.623 0.214 259.815);
+  --chart-3: oklch(0.546 0.245 262.881);
+  --chart-4: oklch(0.488 0.243 264.376);
+  --chart-5: oklch(0.424 0.199 265.638);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+=======
   --chart-1: oklch(59.771% 0.28325 314.389);
   --chart-2: oklch(70.455% 0.29911 331.391);
   --chart-3: oklch(64.558% 0.30246 320.104);
@@ -79,10 +109,29 @@
   --sidebar-accent-foreground: oklch(85.397% 0.08185 330.891);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(42.643% 0.28575 265.955);
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
 }
 
 .dark {
   --background: oklch(0.145 0 0);
+<<<<<<< HEAD
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.87 0.00 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.371 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+=======
   --foreground: oklch(94.218% 0.00347 324.165);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(92.449% 0.0097 320.078);
@@ -99,6 +148,7 @@
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(66.747% 0.29237 330.875 / 0.957);
   --input: oklch(67.272% 0.29897 331.783 / 0.945);
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
   --ring: oklch(0.556 0 0);
   --chart-1: oklch(0.809 0.105 251.813);
   --chart-2: oklch(0.623 0.214 259.815);
@@ -107,11 +157,19 @@
   --chart-5: oklch(0.424 0.199 265.638);
   --sidebar: oklch(0.205 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
+<<<<<<< HEAD
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+=======
   --sidebar-primary: oklch(15.939% 0.05446 264.061);
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(63.588% 0.28903 328.326);
   --sidebar-accent-foreground: oklch(58.157% 0.27934 318.66);
   --sidebar-border: oklch(64.283% 0.30508 320.891 / 0.918);
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
   --sidebar-ring: oklch(0.556 0 0);
 }
 
@@ -119,12 +177,17 @@
   * {
     @apply border-border outline-ring/50;
   }
+<<<<<<< HEAD
+=======
 
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
   body {
     @apply bg-background text-foreground;
   }
 }
 
+<<<<<<< HEAD
+=======
 .tiptap p.is-editor-empty:first-child::before {
   content: attr(data-placeholder);
   float: left;
@@ -237,3 +300,4 @@
 .prose s {
   text-decoration: line-through;
 }
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05

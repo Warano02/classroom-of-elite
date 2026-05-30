@@ -2,16 +2,57 @@
 
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+<<<<<<< HEAD
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  Heart,
+  MoreHorizontal,
+  ExternalLink,
+  Copy,
+  Pencil,
+  Trash2,
+  Tag,
+  Archive,
+} from "lucide-react";
+import { cn } from "@/lib/utils";
+import { useBookmarksStore } from "@/store/bookmarks-store";
+import { tags as allTags, type Bookmark } from "@/mock-data/bookmarks";
+=======
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger, } from "@/components/ui/dropdown-menu";
 import { Heart, MoreHorizontal, ExternalLink, Copy, Pencil, Trash2, Tag, Archive, } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Bookmark } from "@/types";
 import { useState } from "react";
 import axiosInstance from "@/lib/axios";
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
 
 interface BookmarkCardProps {
   bookmark: Bookmark;
   variant?: "grid" | "list";
+<<<<<<< HEAD
+}
+
+export function BookmarkCard({
+  bookmark,
+  variant = "grid",
+}: BookmarkCardProps) {
+  const { toggleFavorite, archiveBookmark, trashBookmark } =
+    useBookmarksStore();
+  const bookmarkTags = allTags.filter((tag) => bookmark.tags.includes(tag.id));
+
+  const handleCopyUrl = () => {
+    navigator.clipboard.writeText(bookmark.url);
+  };
+
+  const handleOpenUrl = () => {
+    window.open(bookmark.url, "_blank");
+=======
   callback?: (id: string) => void
 }
 
@@ -29,6 +70,7 @@ export function BookmarkCard({ bookmark, variant = "grid", callback }: BookmarkC
 
   const handleOpenUrl = () => {
     window.open(`/course/${bookmark._id}`, "_blank");
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
   };
 
   if (variant === "list") {
@@ -47,6 +89,16 @@ export function BookmarkCard({ bookmark, variant = "grid", callback }: BookmarkC
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
             <h3 className="font-medium truncate">{bookmark.title}</h3>
+<<<<<<< HEAD
+            {/* {bookmarkTags.length > 0 && (
+              <div className="hidden sm:flex items-center gap-1">
+                {bookmarkTags.slice(0, 2).map((tag) => (
+                  <span
+                    key={tag.id}
+                    className={cn(
+                      "inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium",
+                      tag.color
+=======
             {bookmark.interests.length > 0 && (
               <div className="hidden sm:flex items-center gap-1">
                 {bookmark.interests.slice(0, 2).map((tag) => (
@@ -55,11 +107,24 @@ export function BookmarkCard({ bookmark, variant = "grid", callback }: BookmarkC
                     className={cn(
                       "inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium",
                       "bg-foreground/10 text-foreground"
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
                     )}
                   >
                     {tag.name}
                   </span>
                 ))}
+<<<<<<< HEAD
+                {bookmarkTags.length > 2 && (
+                  <span className="text-[10px] text-muted-foreground">
+                    +{bookmarkTags.length - 2}
+                  </span>
+                )}
+              </div>
+            )} */}
+          </div>
+          <p className="text-sm text-muted-foreground truncate">
+            {bookmark.url}
+=======
                 {bookmark.interests.length > 2 && (
                   <span className="text-[10px] text-muted-foreground">
                     +{bookmark.interests.length - 2}
@@ -70,6 +135,7 @@ export function BookmarkCard({ bookmark, variant = "grid", callback }: BookmarkC
           </div>
           <p className="text-sm text-muted-foreground truncate">
             { } url of the course
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
           </p>
         </div>
 
@@ -77,12 +143,20 @@ export function BookmarkCard({ bookmark, variant = "grid", callback }: BookmarkC
           <Button
             variant="ghost"
             size="icon-xs"
+<<<<<<< HEAD
+            onClick={() => toggleFavorite(bookmark.id)}
+=======
             onClick={() => toggleFavorite()}
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
           >
             <Heart
               className={cn(
                 "size-4",
+<<<<<<< HEAD
+                bookmark.isFavorite && "fill-red-500 text-red-500"
+=======
                 isFavorite && "fill-red-500 text-red-500"
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
               )}
             />
           </Button>
@@ -100,6 +174,18 @@ export function BookmarkCard({ bookmark, variant = "grid", callback }: BookmarkC
                 <Copy className="size-4 mr-2" />
                 Copy URL
               </DropdownMenuItem>
+<<<<<<< HEAD
+
+              <DropdownMenuSeparator />
+            
+              <DropdownMenuItem
+                className="text-destructive"
+                onClick={() => trashBookmark(bookmark.id)}
+              >
+                <Trash2 className="size-4 mr-2" />
+                Delete
+              </DropdownMenuItem>
+=======
               <DropdownMenuItem>
                 <Pencil className="size-4 mr-2" />
                 Edit
@@ -109,6 +195,7 @@ export function BookmarkCard({ bookmark, variant = "grid", callback }: BookmarkC
                 Add to collection
               </DropdownMenuItem>
 
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
@@ -123,12 +210,20 @@ export function BookmarkCard({ bookmark, variant = "grid", callback }: BookmarkC
           variant="secondary"
           size="icon-xs"
           className="bg-background/80 backdrop-blur-sm"
+<<<<<<< HEAD
+          onClick={() => toggleFavorite(bookmark.id)}
+=======
           onClick={() => toggleFavorite()}
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
         >
           <Heart
             className={cn(
               "size-4",
+<<<<<<< HEAD
+              bookmark.isFavorite && "fill-red-500 text-red-500"
+=======
               isFavorite && "fill-red-500 text-red-500"
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
             )}
           />
         </Button>
@@ -151,6 +246,17 @@ export function BookmarkCard({ bookmark, variant = "grid", callback }: BookmarkC
               <ExternalLink className="size-4 mr-2" />
               Open in new tab
             </DropdownMenuItem>
+<<<<<<< HEAD
+            <DropdownMenuSeparator />
+            
+            <DropdownMenuItem
+              className="text-destructive"
+              onClick={() => trashBookmark(bookmark.id)}
+            >
+              <Trash2 className="size-4 mr-2" />
+              Delete
+            </DropdownMenuItem>
+=======
             <DropdownMenuItem>
               <Pencil className="size-4 mr-2" />
               Edit
@@ -160,6 +266,7 @@ export function BookmarkCard({ bookmark, variant = "grid", callback }: BookmarkC
               Add To collectionn
             </DropdownMenuItem>
 
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
@@ -187,6 +294,17 @@ export function BookmarkCard({ bookmark, variant = "grid", callback }: BookmarkC
           <p className="text-sm text-muted-foreground line-clamp-2">
             {bookmark.description}
           </p>
+<<<<<<< HEAD
+          {/* {bookmarkTags.length > 0 && (
+            <div className="flex flex-wrap gap-1 pt-1">
+              {bookmarkTags.slice(0, 3).map((tag) => (
+                <span
+                  key={tag.id}
+                  className={cn(
+                    "inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium",
+                    tag.color
+                  )}
+=======
           {bookmark.interests.length > 0 && (
             <div className="flex flex-wrap gap-1 pt-1">
               {bookmark.interests.slice(0, 3).map((tag) => (
@@ -195,10 +313,20 @@ export function BookmarkCard({ bookmark, variant = "grid", callback }: BookmarkC
                   className={cn(
                     "inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium",
                     "bg-foreground/10 text-foreground")}
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
                 >
                   {tag.name}
                 </span>
               ))}
+<<<<<<< HEAD
+              {bookmarkTags.length > 3 && (
+                <span className="text-[10px] text-muted-foreground py-0.5">
+                  +{bookmarkTags.length - 3} more
+                </span>
+              )}
+            </div>
+          )} */}
+=======
               {bookmark.interests.length > 3 && (
                 <span className="text-[10px] text-muted-foreground py-0.5">
                   +{bookmark.interests.length - 3} more
@@ -206,6 +334,7 @@ export function BookmarkCard({ bookmark, variant = "grid", callback }: BookmarkC
               )}
             </div>
           )}
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
         </div>
       </button>
     </div>

@@ -1,7 +1,15 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-    lldldl
+<<<<<<< HEAD
+lldldl
 
-## Getting 
+## Getting
+
+=======
+lldldl
+
+## Getting
+
+> > > > > > > 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
 
 First, run the development server:
 
@@ -15,7 +23,7 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result...
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 

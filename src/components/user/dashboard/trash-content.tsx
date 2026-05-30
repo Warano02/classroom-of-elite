@@ -11,8 +11,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Trash2, MoreHorizontal, RotateCcw, XCircle, ExternalLink } from "lucide-react";
 import Image from "next/image";
+<<<<<<< HEAD
+import { type Bookmark } from "@/mock-data/bookmarks";
+import { cn } from "@/lib/utils";
+=======
 import { cn } from "@/lib/utils";
 import { Bookmark } from "@/types";
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
 
 function TrashedBookmarkCard({ bookmark }: { bookmark: Bookmark }) {
   const { restoreFromTrash, permanentlyDelete } = useBookmarksStore();
@@ -31,14 +36,22 @@ function TrashedBookmarkCard({ bookmark }: { bookmark: Bookmark }) {
 
       <div className="flex-1 min-w-0">
         <h3 className="font-medium truncate">{bookmark.title}</h3>
+<<<<<<< HEAD
+        <p className="text-sm text-muted-foreground truncate">{bookmark.url}</p>
+=======
         <p className="text-sm text-muted-foreground truncate">{bookmark._id}</p>
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
       </div>
 
       <div className="flex items-center gap-1">
         <Button
           variant="outline"
           size="sm"
+<<<<<<< HEAD
+          onClick={() => restoreFromTrash(bookmark.id)}
+=======
           onClick={() => restoreFromTrash(bookmark._id)}
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
         >
           <RotateCcw className="size-4 mr-1" />
           Restore
@@ -51,7 +64,11 @@ function TrashedBookmarkCard({ bookmark }: { bookmark: Bookmark }) {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuItem
+<<<<<<< HEAD
+              onClick={() => window.open(bookmark.url, "_blank")}
+=======
               onClick={() => window.open(bookmark._id, "_blank")}
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
             >
               <ExternalLink className="size-4 mr-2" />
               Open URL
@@ -59,7 +76,11 @@ function TrashedBookmarkCard({ bookmark }: { bookmark: Bookmark }) {
             <DropdownMenuSeparator />
             <DropdownMenuItem
               className="text-destructive"
+<<<<<<< HEAD
+              onClick={() => permanentlyDelete(bookmark.id)}
+=======
               onClick={() => permanentlyDelete(bookmark._id)}
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
             >
               <XCircle className="size-4 mr-2" />
               Delete Permanently
@@ -100,7 +121,11 @@ export function TrashContent() {
 
         <div className="flex flex-col gap-2">
           {filteredTrash.map((bookmark) => (
+<<<<<<< HEAD
+            <TrashedBookmarkCard key={bookmark.id} bookmark={bookmark} />
+=======
             <TrashedBookmarkCard key={bookmark._id} bookmark={bookmark} />
+>>>>>>> 7f14cc3b6acbbdf51ffc200d3d8d27084e350e05
           ))}
         </div>
 
