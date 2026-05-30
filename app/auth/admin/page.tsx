@@ -6,6 +6,7 @@ export const metadata: Metadata = {
     description: "Sign in to your teacher dashboard to manage your courses and students.",
 };
 
+
 export default function TeacherLoginPage() {
     return (
         <div className="flex h-screen w-full overflow-hidden bg-neutral-950">
