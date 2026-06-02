@@ -33,9 +33,9 @@ import {
   Search,
   Settings,
   Globe,
-  Plus,
-  Check,
-  User,
+  CheckCircle2,
+  Clock3,
+  PlayCircle,
   LogOut,
   Folder,
   Star,
@@ -72,8 +72,11 @@ const navItems = [
   { icon: Star, label: "Favorites", href: "/user/favorites" },
   { icon: Mail, label: "Inbox", href: "/user/inbox" },
   { icon: Bell, label: "Notifications", href: "/user/notifications" },
-  { icon: Archive, label: "Archive", href: "/user/archive" },
-  { icon: Trash2, label: "Trash", href: "/user/trash" },
+  { icon: Clock3, label: "Watch Later", href: "/user/wach_later" },
+  { icon: CheckCircle2, label: "Completed courses", href: "/user/course_complete" },
+  { icon: PlayCircle, label: "In Progress", href: "/user/course_in_progress" },
+  // { icon: Archive, label: "Archive", href: "/user/archive" },
+  // { icon: Trash2, label: "Trash", href: "/user/trash" },
 ];
 
 export function BookmarksSidebar({

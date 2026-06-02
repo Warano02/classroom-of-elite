@@ -1,6 +1,6 @@
 import { BookmarksHeader } from "@/components/user/dashboard/header";
-import { FavoritesContent } from "@/components/user/dashboard/favorites-content";
 import { Metadata } from "next";
+import { SystemCollection } from "@/components/user/dashboard/system-collection";
 
 export const metadata: Metadata = {
   title: "Favorite Course - IW",
@@ -10,7 +10,7 @@ export default function FavoritesPage() {
   return (
     <>
       <BookmarksHeader title="Favorites" />
-      <FavoritesContent />
+      <SystemCollection sys="favorites" />
     </>
   );
 }
