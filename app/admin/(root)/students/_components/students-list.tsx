@@ -22,7 +22,8 @@ function StudentsList() {
     const approve = async (id: string) => {
         setAction(true)
         try {
-            await axiosInstance.patch("/cr/dec_enrollment", { enroll: id, decision: "active" })
+            console.log({ enroll: id, decision: "active" })
+            await axiosInstance.patch("/t/dec_enrollment", { enroll: id, decision: "active" })
             setStudents(p => p.filter(e => e.id != id))
             return toast.success("User join the classroom successfully !", { position: "top-center" })
         } catch (e) {
@@ -35,7 +36,7 @@ function StudentsList() {
     const reject = async (id: string) => {
         setAction(true)
         try {
-            await axiosInstance.patch("/cr/dec_enrollment", { enroll: id, decision: "banned" })
+            await axiosInstance.patch("/t/dec_enrollment", { enroll: id, decision: "banned" })
             setStudents(p => p.filter(e => e.id != id))
             return toast.success("User join the classroom successfully !", { position: "top-center" })
         } catch (e) {

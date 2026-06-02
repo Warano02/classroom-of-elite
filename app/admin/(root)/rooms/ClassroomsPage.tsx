@@ -113,7 +113,7 @@ export function ClassroomsPage() {
                                 </DropdownMenuContent>
                             </DropdownMenu>
                         </div>
-                        <div className="h-28 flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/5">
+                        <div className="h-28 flex items-center justify-center bg-linear-to-br from-primary/10 to-primary/5">
                             <div className="size-12 rounded-xl bg-background shadow-sm flex items-center justify-center text-primary">
                                 <School className="size-6" />
                             </div>
@@ -132,7 +132,7 @@ export function ClassroomsPage() {
                 ))}
                 <button
                     onClick={() => setDrawerOpen(true)}
-                    className="flex flex-col items-center justify-center rounded-xl border border-dashed bg-card hover:bg-accent/30 hover:border-primary/40 transition-colors min-h-[200px] gap-2 text-muted-foreground hover:text-primary cursor-pointer"
+                    className="flex flex-col items-center justify-center rounded-xl border border-dashed bg-card hover:bg-accent/30 hover:border-primary/40 transition-colors min-h-50 gap-2 text-muted-foreground hover:text-primary cursor-pointer"
                 >
                     <div className="size-12 rounded-xl border-2 border-dashed flex items-center justify-center">
                         <Plus className="size-5" />

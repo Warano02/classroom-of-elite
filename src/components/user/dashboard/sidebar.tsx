@@ -94,7 +94,7 @@ export function BookmarksSidebar({
   const { logout, user } = useAuthStore()
 
   const isHomePage = pathname === "/user";
-  initSocket(user?._id || '')
+  // initSocket(user?._id || '')
   return (
     <Sidebar collapsible="offcanvas" className="lg:border-r-0!" {...props}>
       <SidebarHeader className="p-5 pb-0">

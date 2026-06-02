@@ -6,9 +6,8 @@ export default function BookmarksPage() {
   return (
     <>
       <BookmarksHeader />
-      <Suspense fallback={<div>Loading...</div>}>
         <BookmarksContent />
-      </Suspense>
+    
     </>
   );
 }

@@ -2,21 +2,19 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import axiosInstance from "@/lib/axios"
-import { Home, House } from "lucide-react"
+import { Home, House, Loader2, Plus } from "lucide-react"
 import { useEffect, useState } from "react"
 import ClassRoomCard, { IClassroomCard } from "./classroom-card"
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
+import { toast } from "sonner"
 
 function ClassroomsContent() {
-    const mockRoom: IClassroomCard = {
-        _id: "22",
-        name: "L3 INFO",
-        description: "Welcome to L3 In",
-        favicon: "",
-        status: "pending",
-        joinCode: ""
-    }
+    const [drawerOpen, setDrawerOpen] = useState(false)
     const [loading, setLoading] = useState(true)
     const [classrooms, setCR] = useState<IClassroomCard[]>([])
+    const [code, setCode] = useState("")
     const fetchClass = async () => {
         try {
             const { data } = await axiosInstance.get<{ classrooms: IClassroomCard[] }>("/cr")
@@ -24,6 +22,19 @@ function ClassroomsContent() {
         } catch (e) {
             console.log(e)
             alert("Error occured while fectching classrooms ")
+        } finally {
+            setLoading(false)
+        }
+    }
+    const handleSubmit = async () => {
+        if (!code) return toast.error("Please provide the code ", { position: "top-center" })
+        setLoading(true)
+        try {
+            const { data } = await axiosInstance.post("/cr/join?joinCode=" + code.toUpperCase())
+            toast.success(data.message)
+            setCode("")
+            setDrawerOpen(false)
+            fetchClass()
         } finally {
             setLoading(false)
         }
@@ -54,8 +65,39 @@ function ClassroomsContent() {
                     {
                         classrooms.map(classroom => <ClassRoomCard room={classroom} key={classroom._id} />)
                     }
+                    <button
+                        onClick={() => setDrawerOpen(true)}
+                        className="flex flex-col items-center justify-center rounded-xl border border-dashed bg-card hover:bg-accent/30 hover:border-primary/40 transition-colors min-h-50 gap-2 text-muted-foreground hover:text-primary cursor-pointer"
+                    >
+                        <div className="size-12 rounded-xl border-2 border-dashed flex items-center justify-center">
+                            <Plus className="size-5" />
+                        </div>
+                        <span className="text-xs font-medium">New classroom</span>
+                    </button>
                 </div>
+
             </div>
+            <Sheet open={drawerOpen} onOpenChange={setDrawerOpen}>
+                <SheetContent side="right" className="w-full sm:max-w-md flex flex-col gap-0 p-0">
+                    <SheetHeader className="p-6 pb-4 border-b">
+                        <SheetTitle>Request to join Classroom</SheetTitle>
+                        <SheetDescription>Fill the join code of the classroom to request join it !</SheetDescription>
+                    </SheetHeader>
+                    <div className="flex flex-col gap-5 p-6 flex-1 overflow-y-auto">
+                        <div className="space-y-1.5">
+                            <Label htmlFor="name">Classroom Code <span className="text-destructive">*</span></Label>
+                            <Input value={code} placeholder="Enter the code " onChange={e => setCode(e.target.value)} required />
+                        </div>
+
+                    </div>
+                    <div className="p-6 pt-4 border-t">
+                        <Button className="w-full" onClick={handleSubmit} disabled={loading || !code}>
+                            {loading ? <Loader2 className="size-4 mr-2 animate-spin" /> : <Plus className="size-4 mr-2" />}
+                            Request to Join Classroom
+                        </Button>
+                    </div>
+                </SheetContent>
+            </Sheet>
         </div>
     )
 }
@@ -71,7 +113,7 @@ const NoClassRooms = () => {
         try {
             setLoading(true)
             const { data } = await axiosInstance.post("/cr/join?joinCode=" + code.toUpperCase())
-            alert(data.message)
+            toast.success(data.message)
             setCode("")
         } catch (e: any) {
 
