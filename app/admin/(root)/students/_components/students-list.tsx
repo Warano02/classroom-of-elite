@@ -22,10 +22,7 @@ function StudentsList() {
     const approve = async (id: string) => {
         setAction(true)
         try {
-<<<<<<< HEAD
             console.log({ enroll: id, decision: "active" })
-=======
->>>>>>> 4df0bd82f16c9994edbdbdd6b703575ec9828a6e
             await axiosInstance.patch("/t/dec_enrollment", { enroll: id, decision: "active" })
             setStudents(p => p.filter(e => e.id != id))
             return toast.success("User join the classroom successfully !", { position: "top-center" })

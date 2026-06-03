@@ -45,6 +45,8 @@ import { Button } from "@/components/ui/button";
 import { useAuthStore } from "@/store/auth.store";
 import { useBookmarksStore } from "@/store/bookmarks-store";
 import { useUserSocket } from "@/store/user-io.store";
+import { useEffect, useState } from "react";
+import axiosInstance from "@/lib/axios";
 
 const navItems = [
   { title: "Dashboard", icon: LayoutDashboard, href: "/admin" },
@@ -59,16 +61,22 @@ const bottomNavItems = [
   { title: "Settings", icon: Settings, href: "/admin/settings" },
 ];
 
-const recentCourses = [
-  "Introduction to AI",
-  "Python for Beginners",
-  "UX Design Basics",
-];
-
 export default function adminSidebar(props: React.ComponentProps<typeof Sidebar>) {
   const { logout, user } = useAuthStore();
-    const pathname = usePathname();
+  const [recentCourses, setRecentCourses] = useState<{ _id: string, title: string }[]>([])
+  const pathname = usePathname();
   const { initSocket, disconnectSocket } = useUserSocket()
+  const fetchRecents = async () => {
+    const tryget = sessionStorage.getItem("recents_course")
+    if (tryget) return setRecentCourses(JSON.parse(tryget))
+    const { data: { courses } } = await axiosInstance.get("/metadata/admin_dashboard")
+    setRecentCourses(courses)
+  }
+
+  useEffect(() => {
+    fetchRecents()
+  }, [])
+
   return (
     <Sidebar collapsible="offcanvas" className="border-r-0!" {...props}>
       <SidebarHeader className="px-3 py-3">
@@ -119,7 +127,7 @@ export default function adminSidebar(props: React.ComponentProps<typeof Sidebar>
             <SidebarMenu>
               {navItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild isActive={pathname==item.href} className="h-9">
+                  <SidebarMenuButton asChild isActive={pathname == item.href} className="h-9">
                     <Link href={item.href}>
                       <item.icon className="size-4 shrink-0" />
                       <span className="text-sm">{item.title}</span>
@@ -136,18 +144,20 @@ export default function adminSidebar(props: React.ComponentProps<typeof Sidebar>
             <SidebarGroupLabel className="px-0 text-xs font-medium text-muted-foreground uppercase tracking-wider">
               Recent Courses
             </SidebarGroupLabel>
-            <Button variant="ghost" size="icon" className="size-5">
-              <Plus className="size-3" />
-            </Button>
+            <Link href={"/courses/new"}>
+              <Button variant="ghost" size="icon" className="size-5">
+                <Plus className="size-3" />
+              </Button>
+            </Link>
           </div>
           <SidebarGroupContent>
             <SidebarMenu>
               {recentCourses.map((course) => (
-                <SidebarMenuItem key={course}>
+                <SidebarMenuItem key={course.title}>
                   <SidebarMenuButton asChild className="h-8">
-                    <Link href="#">
+                    <Link href={`/admin/courses/${course._id}`} >
                       <BookOpen className="size-3.5 shrink-0 text-muted-foreground" />
-                      <span className="text-sm truncate">{course}</span>
+                      <span className="text-sm truncate">{course.title}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
