@@ -142,10 +142,10 @@ export function StepGeneral() {
       <Field orientation="horizontal" className="max-w-sm" data-invalid>
         <FieldContent>
           <FieldLabel htmlFor="switch-public">
-            Accept terms and conditions
+            Make course private
           </FieldLabel>
           <FieldDescription>
-            You must accept the terms and conditions to continue.
+            By making that private, only student in your classroom can see this course
           </FieldDescription>
         </FieldContent>
         <Switch id="switch-public" checked={data.isPublic} onCheckedChange={(v) => updateData({ isPublic: v })} disabled={classrooms.length == 0} />
@@ -166,11 +166,11 @@ export function StepGeneral() {
             </div>
           )
           :
-          (<Select value={data.classroom} onValueChange={(v) => updateData({ classroom: v })}>
+          (<Select value={data.classroom} onValueChange={(v) => updateData({ classroom: v })}  >
             <SelectTrigger className="w-full max-w-48">
               <SelectValue placeholder="Select a Classroom" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent align="end">
               <SelectGroup>
                 <SelectLabel>Classroom</SelectLabel>
                 {
