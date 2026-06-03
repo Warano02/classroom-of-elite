@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { Switch } from "@/components/ui/switch"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
 import { Plus, X, Upload, Globe, Lock } from "lucide-react"
 import { useRef, useState, useEffect } from "react"
@@ -13,6 +13,7 @@ import type { Tag, TagCategory } from "@/types/course-wizard"
 import { cn } from "@/lib/utils"
 import { RichTextEditor } from "../rich-text-editor"
 import axiosInstance from "@/lib/axios"
+import { Field, FieldContent, FieldDescription, FieldLabel } from "../ui/field"
 
 const categoryLabels: Record<TagCategory, string> = {
   programming: "Programming",
@@ -30,9 +31,10 @@ export function StepGeneral() {
   const [tags, setTags] = useState<Tag[]>([])
   const [tagSearch, setTagSearch] = useState("")
   const [tagOpen, setTagOpen] = useState(false)
-
+  const [classrooms, setClassrooms] = useState<{ _id: string, name: string }[]>([])
   useEffect(() => {
-
+    axiosInstance.get("/t/can_make_private")
+      .then((res) => setClassrooms(res.data.classrooms))
     axiosInstance.get("/p/tags")
       .then((res) => setTags(res.data.tags))
   }, [])
@@ -137,20 +139,52 @@ export function StepGeneral() {
           </Select>
         </div>
       </div>
-
-      <div className="flex items-center justify-between rounded-md border px-4 py-3">
-        <div className="flex items-center gap-2">
-          <Globe className="size-4 text-muted-foreground" />
-          <div>
-            <p className="text-sm font-medium">Public course</p>
-            <p className="text-xs text-muted-foreground">
-              By default, your course will be public and visible to all users. You can change this setting later if you want to restrict access.
-            </p>
-          </div>
-        </div>
-        <Switch checked={data.isPublic} onCheckedChange={(v) => updateData({ isPublic: v })} />
-      </div>
-
+      <Field orientation="horizontal" className="max-w-sm" data-invalid>
+        <FieldContent>
+          <FieldLabel htmlFor="switch-public">
+            Accept terms and conditions
+          </FieldLabel>
+          <FieldDescription>
+            You must accept the terms and conditions to continue.
+          </FieldDescription>
+        </FieldContent>
+        <Switch id="switch-public" checked={data.isPublic} onCheckedChange={(v) => updateData({ isPublic: v })} disabled={classrooms.length == 0} />
+      </Field>
+      {
+        data.isPublic
+          ? (
+            <div className="flex items-center justify-between rounded-md border px-4 py-3">
+              <div className="flex items-center gap-2">
+                <Globe className="size-4 text-muted-foreground" />
+                <div>
+                  <p className="text-sm font-medium">Public course</p>
+                  <p className="text-xs text-muted-foreground">
+                    By default, your course will be public and visible to all users. You can change this setting later if you want to restrict access.
+                  </p>
+                </div>
+              </div>
+            </div>
+          )
+          :
+          (<Select value={data.classroom} onValueChange={(v) => updateData({ classroom: v })}>
+            <SelectTrigger className="w-full max-w-48">
+              <SelectValue placeholder="Select a Classroom" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectLabel>Classroom</SelectLabel>
+                {
+                  classrooms.map((c) => (
+                    <SelectItem key={c._id} value={c._id}>
+                      {c.name}
+                    </SelectItem>
+                  ))
+                }
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+          )
+      }
       <div className="space-y-2">
         <Label>Learning objectives</Label>
         <div className="space-y-2">
