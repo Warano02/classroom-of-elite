@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { FileText, Link2, Video, Image, Music, ExternalLink, Trash2, MoreHorizontal, Copy, UploadCloud } from "lucide-react";
+import { FileText, Link2, Video, Image, Music, ExternalLink, Trash2, MoreHorizontal, Copy, UploadCloud, Plus } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -14,6 +14,8 @@ import {
 import { useAuthStore } from "@/store/auth.store";
 import { Skeleton } from "@/components/ui/skeleton";
 import { toast } from "sonner";
+import { useParams } from "next/navigation";
+import Link from "next/link";
 
 export type ResourceType = "pdf" | "link" | "video_file" | "video_link" | "image" | "audio";
 
@@ -164,15 +166,16 @@ function ResourceCard({
 
 
 export function ResourceList() {
+    const { roomId } = useParams()
     const { user } = useAuthStore()
     const [resources, setResources] = useState<Resource[]>(MOCK_RESOURCES);
     const [filter, setFilter] = useState<ResourceType | "all">("all");
     const [loading, setLoading] = useState(true);
     const uniqueFilters = [
-        { value: "all" as const, label: "Tous" },
+        { value: "all" as const, label: "All" },
         { value: "pdf" as const, label: "PDF" },
-        { value: "link" as const, label: "Liens" },
-        { value: "video_file" as const, label: "Vidéos" },
+        { value: "link" as const, label: "Links" },
+        { value: "video_file" as const, label: "Videos" },
         { value: "image" as const, label: "Images" },
         { value: "audio" as const, label: "Audio" },
     ];
@@ -187,10 +190,9 @@ export function ResourceList() {
         setResources((prev) => prev.filter((r) => r.id !== id));
     }
 
-    if (loading) return <section className="space-y-6">
+    if (!loading) return <section className="space-y-6">
         <Skeleton className="w-full h-24" />
         <div className="grid grid-cols-4 gap-4">
-
             {
                 Array.from({ length: 16 }).map((_, i) => <Skeleton key={i} className="w-full h-60" />)
             }
@@ -249,6 +251,14 @@ export function ResourceList() {
                             canManage={user?.role === "teacher"}
                         />
                     ))}
+
+                    {
+                        user?.role == "teacher" && <Link href={`/rooms/${roomId}/resources/new`} className="relative flex justify-center items-center  rounded-xl border border-dashed bg-card  hover:bg-accent/30 transition-colors">
+                            <Plus className="size-3.5 mr-2" />
+
+                        </Link>
+                    }
+
                 </div>
             )}
         </div>
