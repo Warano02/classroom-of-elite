@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { GraduationCap, Zap } from "lucide-react"
 import { useRouter } from "next/navigation"
+import { toast } from "sonner"
+import axiosInstance from "@/lib/axios"
 
 type EducationLevel = "none" | "primary" | "middle_school" | "high_school" | "technical_vocational" | "bachelor" | "master" | "phd" | "other"
 type SkillLevel = "beginner" | "intermediate" | "advanced"
@@ -38,10 +40,17 @@ export default function OnboardingStep2Page() {
     const isValid = level !== null && skill !== null
 
     const payload: Payload = { level, skill }
- 
-    const router=useRouter()
+
+    const router = useRouter()
     const handleContinue = async () => {
-       router.replace("/onboarding/step-3")
+        try {
+            await axiosInstance.post("/onboarding/education_level", payload)
+            router.replace("/onboarding/step-3")
+        } catch (error) {
+            console.log("Error occured while tying to save your interests... ", error)
+            toast.error("Error occured while tying to save your interests...")
+        }
+
     }
 
     return (
@@ -59,7 +68,7 @@ export default function OnboardingStep2Page() {
                     </div>
                     <div className="flex flex-wrap gap-2">
                         {educationOptions.map((opt) => (
-                            <button key={opt.value} onClick={() => setLevel(opt.value)} className={cn("px-4 py-2 rounded-xl border text-sm font-medium transition-all duration-150 text-left cursor-pointer", level === opt.value ? "bg-white text-black border-white": "bg-zinc-900 text-zinc-300 border-zinc-700 hover:border-zinc-500 hover:text-white")}>
+                            <button key={opt.value} onClick={() => setLevel(opt.value)} className={cn("px-4 py-2 rounded-xl border text-sm font-medium transition-all duration-150 text-left cursor-pointer", level === opt.value ? "bg-white text-black border-white" : "bg-zinc-900 text-zinc-300 border-zinc-700 hover:border-zinc-500 hover:text-white")}>
                                 {opt.label}
                             </button>
                         ))}
@@ -76,7 +85,7 @@ export default function OnboardingStep2Page() {
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                         {skillOptions.map((opt) => (
-                            <button key={opt.value}  onClick={() => setSkill(opt.value)}  className={cn("p-4 rounded-xl border text-left transition-all duration-150 cursor-pointer", skill === opt.value? "bg-white text-black border-white": "bg-zinc-900 text-zinc-300 border-zinc-700 hover:border-zinc-500 hover:text-white" )} >
+                            <button key={opt.value} onClick={() => setSkill(opt.value)} className={cn("p-4 rounded-xl border text-left transition-all duration-150 cursor-pointer", skill === opt.value ? "bg-white text-black border-white" : "bg-zinc-900 text-zinc-300 border-zinc-700 hover:border-zinc-500 hover:text-white")} >
                                 <p className="font-semibold text-sm mb-1">{opt.label}</p>
                                 <p className={cn("text-xs", skill === opt.value ? "text-zinc-500" : "text-zinc-500")}>
                                     {opt.description}
@@ -86,7 +95,7 @@ export default function OnboardingStep2Page() {
                     </div>
                 </div>
                 <div className="flex items-center gap-4">
-                    <Button  onClick={handleContinue}  disabled={!isValid} className="bg-white text-black font-semibold px-7 py-5 rounded-xl hover:bg-zinc-100 transition-all disabled:opacity-30 disabled:cursor-not-allowed text-sm cursor-pointer">
+                    <Button onClick={handleContinue} disabled={!isValid} className="bg-white text-black font-semibold px-7 py-5 rounded-xl hover:bg-zinc-100 transition-all disabled:opacity-30 disabled:cursor-not-allowed text-sm cursor-pointer">
                         Continue
                     </Button>
                 </div>

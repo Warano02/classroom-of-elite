@@ -9,7 +9,7 @@ interface IUser {
 
 export async function proxy(req: NextRequest) {
   const token = req.cookies.get("token")?.value;
-  const token_o = req.cookies.get("token_o")?.value;
+  const token_o = req.cookies.get("tmp_token")?.value;
   const uc = req.cookies.get("user")?.value;
 
   const { pathname } = req.nextUrl;

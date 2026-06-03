@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { Briefcase, TrendingUp, BookOpen, Laptop, Sparkles } from "lucide-react"
 import { useRouter } from "next/navigation"
+import axiosInstance from "@/lib/axios"
+import { toast } from "sonner"
 
 type LearningGoal = "job" | "improve_skills" | "exam" | "freelance" | "curiosity"
 
@@ -19,7 +21,14 @@ export default function OnboardingStep3Page() {
     const [goal, setGoal] = useState<LearningGoal | null>(null)
     const router = useRouter()
     const handleContinue = async () => {
-        router.replace("/user")
+        try {
+            await axiosInstance.post("/onboarding/learning_goal", { goal })
+            toast.success("Your account hs been created successffully !")
+            router.replace("/user")
+        } catch (error) {
+            console.log("Error occured while tying to save your interests... ", error)
+            toast.error("Error occured while tying to save your interests...")
+        }
     }
 
     return (

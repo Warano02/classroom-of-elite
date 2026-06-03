@@ -22,7 +22,7 @@ function StudentsList() {
     const approve = async (id: string) => {
         setAction(true)
         try {
-            await axiosInstance.patch("/cr/dec_enrollment", { enroll: id, decision: "active" })
+            await axiosInstance.patch("/t/dec_enrollment", { enroll: id, decision: "active" })
             setStudents(p => p.filter(e => e.id != id))
             return toast.success("User join the classroom successfully !", { position: "top-center" })
         } catch (e) {
@@ -35,7 +35,7 @@ function StudentsList() {
     const reject = async (id: string) => {
         setAction(true)
         try {
-            await axiosInstance.patch("/cr/dec_enrollment", { enroll: id, decision: "banned" })
+            await axiosInstance.patch("/t/dec_enrollment", { enroll: id, decision: "banned" })
             setStudents(p => p.filter(e => e.id != id))
             return toast.success("User join the classroom successfully !", { position: "top-center" })
         } catch (e) {
@@ -44,7 +44,7 @@ function StudentsList() {
             setAction(false)
         }
     }
-    
+
     useEffect(() => {
         const f = async () => {
             const { data } = await axiosInstance.get("/cr/pending_enrolls")
@@ -60,10 +60,9 @@ function StudentsList() {
                 <div className="size-12 rounded-full bg-muted flex items-center justify-center mb-4">
                     <Clock className="size-6 text-muted-foreground" />
                 </div>
-                <h3 className="text-lg font-medium mb-1">No favorites yet</h3>
+                <h3 className="text-lg font-medium mb-1">No Pending request yet</h3>
                 <p className="text-sm text-muted-foreground max-w-sm">
-                    Mark bookmarks as favorites by clicking the heart icon to see them
-                    here.
+                    No pending request to join your classroom for now prof.!
                 </p>
             </div>
         </div>

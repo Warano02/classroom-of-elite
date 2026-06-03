@@ -14,7 +14,7 @@ export default function OnboardingPage() {
             <div className="relative z-10 flex flex-col items-center w-full max-w-md">
                 <div className="flex items-center gap-3 mb-12">
                     <div className="w-9 h-9 rounded-xl bg-gray-700 animate-pulse" />
-                    <span className="text-white text-xl font-semibold tracking-tight" >Ingenieur</span>
+                    <span className="text-white text-xl font-semibold tracking-tight" >Classroom Of elite</span>
                 </div>
                 <div className="text-center mb-10">
                     <h1 className="text-white text-4xl font-bold mb-3 leading-tight">
@@ -23,7 +23,7 @@ export default function OnboardingPage() {
                     <p className="text-zinc-400 text-sm tracking-wide">A few things to review before you start learning</p>
                 </div>
                 <Terms />
-                
+
             </div>
         </div>
     )
