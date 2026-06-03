@@ -6,6 +6,7 @@ import { Search, Loader2 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import axiosInstance from "@/lib/axios"
 import { useRouter } from "next/navigation"
+import { toast } from "sonner"
 
 type Interest = {
     "_id": string,
@@ -51,8 +52,13 @@ export default function OnboardingInterestsPage() {
     const payload = { interests: selected }
 
     const handleContinue = async () => {
-        // before redirect, i'll sent  a post request to the backend
-        router.replace("/onboarding/step-2")
+        try {
+            await axiosInstance.post("/onboarding/interests", payload)
+            router.replace("/onboarding/step-2")
+        } catch (error) {
+            console.log("Error occured while tying to save your interests... ", error)
+            toast.error("Error occured while tying to save your interests...")
+        }
     }
 
     return (

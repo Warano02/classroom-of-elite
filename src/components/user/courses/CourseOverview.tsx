@@ -100,7 +100,7 @@ export default function CourseOverview() {
               <h3 className="text-sm font-semibold text-black dark:text-white">Ce que vous apprendrez</h3>
               {objectives.map((item) => (
                 <div key={item} className="flex items-start gap-2.5">
-                  <CheckCircle size={14} className="text-emerald-500 mt-0.5 flex-shrink-0" />
+                  <CheckCircle size={14} className="text-emerald-500 mt-0.5 shrink-0" />
                   <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">{item}</p>
                 </div>
               ))}
@@ -119,18 +119,18 @@ export default function CourseOverview() {
             <div className="space-y-5 flex-1">
               {objectives.map((obj) => (
                 <div key={obj} className="flex items-center gap-4">
-                  <div className="w-9 h-9 rounded-full border border-emerald-600 dark:border-emerald-500 flex items-center justify-center flex-shrink-0">
+                  <div className="w-9 h-9 rounded-full border border-emerald-600 dark:border-emerald-500 flex items-center justify-center shrink-0">
                     <Lightbulb size={15} className="text-emerald-600 dark:text-emerald-400" />
                   </div>
                   <p className="text-sm text-zinc-700 dark:text-zinc-300">{obj}</p>
                 </div>
               ))}
             </div>
-            <div className="w-44 h-44 rounded-full bg-zinc-200 dark:bg-zinc-800 animate-pulse flex-shrink-0" />
+            <div className="w-44 h-44 rounded-full bg-zinc-200 dark:bg-zinc-800 animate-pulse shrink-0" />
           </div>
         </div>
         <div className="flex items-start gap-8">
-          <div className="w-36 h-36 rounded-full bg-zinc-200 dark:bg-zinc-800 animate-pulse flex-shrink-0" />
+          <div className="w-36 h-36 rounded-full bg-zinc-200 dark:bg-zinc-800 animate-pulse shrink-0" />
           <div className="flex-1">
             <h2 className="text-xl font-bold text-black dark:text-white mb-4">Prérequis</h2>
             <Separator className="bg-zinc-200 dark:bg-zinc-800 mb-5" />
@@ -146,7 +146,7 @@ export default function CourseOverview() {
 
       <div className=" left-0 right-0 z-50 bg-white dark:bg-zinc-900 border-t border-zinc-100 dark:border-zinc-800 transition-colors duration-300">
         <div className="max-w-6xl mx-auto px-6 py-3 flex items-center gap-6">
-          <div className="w-24 h-16 rounded-lg bg-zinc-200 dark:bg-zinc-700 animate-pulse flex-shrink-0" />
+          <div className="w-24 h-16 rounded-lg bg-zinc-200 dark:bg-zinc-700 animate-pulse shrink-0" />
           <div className="flex-1 min-w-0">
             <p className="text-xs font-semibold tracking-[0.15em] uppercase text-emerald-600 dark:text-emerald-400 mb-0.5">Data</p>
             <p className="text-sm font-bold text-black dark:text-white truncate">Destination AI: Introduction to Artificial Intelligence</p>
@@ -161,8 +161,8 @@ export default function CourseOverview() {
               </div>
             </div>
           </div>
-          <div className="h-10 w-px bg-zinc-100 dark:bg-zinc-800 flex-shrink-0" />
-          <div className="flex flex-col items-end gap-2 flex-shrink-0">
+          <div className="h-10 w-px bg-zinc-100 dark:bg-zinc-800 shrink-0" />
+          <div className="flex flex-col items-end gap-2 shrink-0">
             <p className="text-xs text-zinc-400 dark:text-zinc-500">Cours en libre accès</p>
             <Button className="bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg font-semibold text-sm px-6 h-9 transition-colors">
               Commencer

@@ -22,7 +22,10 @@ function StudentsList() {
     const approve = async (id: string) => {
         setAction(true)
         try {
+<<<<<<< HEAD
             console.log({ enroll: id, decision: "active" })
+=======
+>>>>>>> 4df0bd82f16c9994edbdbdd6b703575ec9828a6e
             await axiosInstance.patch("/t/dec_enrollment", { enroll: id, decision: "active" })
             setStudents(p => p.filter(e => e.id != id))
             return toast.success("User join the classroom successfully !", { position: "top-center" })
@@ -45,7 +48,7 @@ function StudentsList() {
             setAction(false)
         }
     }
-    
+
     useEffect(() => {
         const f = async () => {
             const { data } = await axiosInstance.get("/cr/pending_enrolls")
@@ -61,10 +64,9 @@ function StudentsList() {
                 <div className="size-12 rounded-full bg-muted flex items-center justify-center mb-4">
                     <Clock className="size-6 text-muted-foreground" />
                 </div>
-                <h3 className="text-lg font-medium mb-1">No favorites yet</h3>
+                <h3 className="text-lg font-medium mb-1">No Pending request yet</h3>
                 <p className="text-sm text-muted-foreground max-w-sm">
-                    Mark bookmarks as favorites by clicking the heart icon to see them
-                    here.
+                    No pending request to join your classroom for now prof.!
                 </p>
             </div>
         </div>

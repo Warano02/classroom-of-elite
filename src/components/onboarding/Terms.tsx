@@ -11,7 +11,6 @@ function Terms() {
     const router = useRouter()
 
     const verifyAccount = async () => {
-        // before that, i'll sent a get request to the backend 
 
         router.replace("/onboarding/step-1")
     }
